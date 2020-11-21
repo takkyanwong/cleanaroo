@@ -1,6 +1,6 @@
 .footer {
   text-align: center;
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .icons {
@@ -17,4 +17,9 @@
     color: $light-gray;
     text-decoration: none;
   }
+}
+
+.footer hr {
+  background-color: $dark-blue;
+  opacity: 0.8;
 }
