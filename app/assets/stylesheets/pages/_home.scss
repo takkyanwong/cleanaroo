@@ -1,1 +1,32 @@
 // Specific CSS for your home-page
+.booking-step {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.booking-step i {
+  color: $green;
+}
+
+.step-text {
+  margin: 0 0 0 20px;
+}
+
+.boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.box {
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+  background-color: $bright-green;
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}

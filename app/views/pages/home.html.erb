@@ -1,2 +1,90 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="navbar">
+
+</div>
+
+<div class="container text-center">
+  <h1 class="mb-4">Always deliver a clean stay</h1>
+  <h4 class="mb-2">Lorem ipsum dolor sit amet</h4>
+</div>
+
+<div class="banner container" style="background-image: url(<%= image_path "cleaner.svg" %>)">
+  <div class="wrapper">
+    <%= link_to "Find cleaner", "#", class:"btn-dark btn-container"%>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="text-center mt-5">How it works</h2>
+
+  <div class="booking-step">
+    <i class="far fa-map"></i>
+    <div class="step-text">
+      <h4>1. Enter your postcode</h4>
+      <p>Lorem</p>
+    </div>
+  </div>
+
+  <div class="booking-step">
+    <i class="far fa-calendar"></i>
+    <div class="step-text">
+      <h4>2. Choose your preferred date</h4>
+      <p>Lorem</p>
+    </div>
+  </div>
+
+  <div class="booking-step">
+    <i class="far fa-user"></i>
+    <div class="step-text">
+      <h4>3. Select cleaner and book</h4>
+      <p>Lorem</p>
+    </div>
+  </div>
+</div>
+
+<div class="boxes">
+  <div class="box border-right border-bottom border-white">
+    <h4>More than</h4>
+    <h2>3M</h2>
+    <h4>cleans</h4>
+  </div>
+
+  <div class="box border-left border-bottom border-white">
+    <h4>More than</h4>
+    <h2>3M</h2>
+    <h4>cleans</h4>
+  </div>
+
+  <div class="box border-right border-top border-white">
+    <h4>More than</h4>
+    <h2>3M</h2>
+    <h4>cleans</h4>
+  </div>
+
+  <div class="box border-left border-top border-white">
+    <h4>More than</h4>
+    <h2>3M</h2>
+    <h4>cleans</h4>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="text-center mt-5 mb-4">Happy customers</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <h5>Marty</h5>
+      <h3>Best service ever!</h3>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <h4>i can only recommend it to everyone ... no stress and super quality.</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="text-center mt-5 mb-4">Find your cleaner now!</h2>
+  <%= link_to "Find cleaner", "#", class:"btn-dark mt-3"%>
+</div>
