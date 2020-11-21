@@ -8,7 +8,6 @@
 
 puts "Cleaning Database"
 
-BookingTask.destroy_all
 Booking.destroy_all
 Property.destroy_all
 Review.destroy_all
@@ -52,7 +51,9 @@ addresses = [ "Avenida Del Portal De L'Angel, 32-34
 El Prat de Llobregat
 08820 Barcelona, España." ]
 
-#Roles: 0 = Property Manager 1 = Cleaner //defined in User Model
+tasks = ['Regular cleaning', 'Carpet cleaning', 'Windows cleaning', 'Feed the bird', 'Water the plants', 'Wash the clothes']
+
+# Roles: 0 = Property Manager 1 = Cleaner //defined in User Model
 users = []
 names.each do |name|
   users << User.create!(email: "#{name}@gmail.com", password: 'password', name: name, phone_number: '+34123465233', role: 0)
@@ -63,10 +64,9 @@ cleaners = []
     cleaners << User.create!(email: "#{cn}@gmail.com", password: 'password', name: cn, phone_number: '+34123465233', role: 1)
   end
 
-
-
-10.times {
-properties = Property.create!(
+  # Seeding properties
+  10.times {
+    properties = Property.create!(
   address: addresses.sample,
   size: rand(1..5),
   bedroom_count: rand(1..5),
@@ -76,5 +76,16 @@ properties = Property.create!(
   property_type: types.sample
   )
 }
+
+# Seeding bookings
+10.times {
+    bookings = Booking.create!(
+      cost: rand(99..499),             
+      property: Property.all.sample,
+      user: cleaners.sample,
+      date: rand(1.month.ago..10.weeks.from_now).to_datetime,
+      comment: "be good with my place"
+    )
+  }            
 
 puts "Finished seeding!"
