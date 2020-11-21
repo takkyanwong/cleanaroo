@@ -1,0 +1,27 @@
+%btn {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  height: 52px;
+  font-weight: 700;
+  font-size: 16px;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  font-style: normal;
+  line-height: 100%;
+}
+
+.btn-dark {
+  @extend %btn;
+  background-color: $dark-blue;
+  border: 0.5px solid #323F4B;
+  color: white;
+}
+
+.btn-green {
+  @extend %btn;
+  background-color: $bright-green;
+  color: $dark-blue;
+  border: 1px solid #27C6C7;
+}
