@@ -2,14 +2,14 @@
   text-align: center;
   text-decoration: none;
   border-radius: 50px;
-  height: 52px;
   font-weight: 700;
   font-size: 16px;
   width: 100%;
   text-transform: uppercase;
   letter-spacing: 1.25px;
   font-style: normal;
-  line-height: 100%;
+  display: block;
+  padding: 14px 0;
 }
 
 .btn-dark {
@@ -24,4 +24,13 @@
   background-color: $bright-green;
   color: $dark-blue;
   border: 1px solid #27C6C7;
+}
+
+.btn-container {
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  left: 0;
+  padding-left: inherit;
+  padding-right: inherit;
 }
