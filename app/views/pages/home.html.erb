@@ -75,7 +75,7 @@
     <div class="card">
       <div class="card-body">
         <h5><%= review.property_manager_name %> </h5>
-        <h3>Best service ever!</h3>
+        <h3><%= review.title %></h3>
         <% review.rating.times do |i| %>
           <i class="fas fa-star"></i>
         <% end %>
