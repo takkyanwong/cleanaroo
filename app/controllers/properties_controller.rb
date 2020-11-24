@@ -7,12 +7,11 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    @property.save
-    # if @property.save
-    #   redirect_to new_booking_path
-    # else
-    #   render :new
-    # end
+    if @property.save
+      redirect_to new_booking_path
+    else
+      render :new
+    end
   end
 
 
