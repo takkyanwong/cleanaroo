@@ -4,11 +4,14 @@ $viewport_size: (s: 320px,
   m: 768px,
   l: 1200px);
 
+.menu__desktop {
+  display: none;
+}
+
 @media (min-width: map-get($viewport_size, l)) {
   .burger__btn {
     display: none;
   }
-
 
   .menu__desktop {
     display: flex;
@@ -36,10 +39,6 @@ $viewport_size: (s: 320px,
   position: absolute;
 }
 
-
-.menu__desktop {
-  display: none;
-}
 
 #page-wrapper {
   position: absolute;
