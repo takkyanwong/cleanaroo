@@ -1,9 +1,21 @@
-$lightgreen: #E7F7F4;
-$dullgreen: #BFECE4;
-$dullWhite: #f6f6f6;
-$lightteal: #1EBEA6;
-$darkblue: #3F3E55;
 $easing: cubic-bezier(.6, .05, .28, .91);
+
+$viewport_size: (s: 320px,
+  m: 768px,
+  l: 1200px);
+
+@media (min-width: map-get($viewport_size, l)) {
+  .burger__btn {
+    display: none;
+  }
+
+
+  .menu__desktop {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -16,7 +28,7 @@ $easing: cubic-bezier(.6, .05, .28, .91);
   height: 5vh;
   justify-content: flex-end;
   border-bottom: .5px solid lightgrey;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
 }
 
 .cleanaroo__logo {
@@ -24,24 +36,9 @@ $easing: cubic-bezier(.6, .05, .28, .91);
   position: absolute;
 }
 
-$viewport_size: (s: 320px,
-  m: 768px,
-  l: 1200px);
 
 .menu__desktop {
   display: none;
-}
-
-@media (min-width: map-get($viewport_size, l)) {
-  .burger__btn {
-    display: none;
-  }
-
-  .menu__desktop {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  }
 }
 
 #page-wrapper {
@@ -65,7 +62,7 @@ $viewport_size: (s: 320px,
     width: 35px;
     height: 2px;
     margin-bottom: 8px;
-    background-color: $lightteal;
+    background-color: $green;
     transition: transform 500ms $easing, opacity 500ms, background-color 250ms;
   }
 }
@@ -74,7 +71,7 @@ $viewport_size: (s: 320px,
   right: 230px;
 
   div {
-    background-color: $darkblue;
+    background-color: $green;
   }
 
   .burger__top {
@@ -101,7 +98,7 @@ $viewport_size: (s: 320px,
   opacity: 0;
   padding: 20px 0px;
   height: 100%;
-  background-color: $lightgreen;
+  background-color: $bright-green;
   transition: all 350ms $easing;
 }
 
@@ -123,12 +120,12 @@ $viewport_size: (s: 320px,
     font-size: 2em;
     padding: 15px 30px;
     transition: all 250ms;
-    color: $darkblue;
+    color: $dark-blue;
 
 
     &:hover {
       padding: 5px 45px;
-      background-color: transparentize($lightteal, .8);
+      background-color: transparentize($green, .8);
     }
   }
 }
