@@ -1,0 +1,6 @@
+<h1>Select your preferred date</h1>
+
+<%= simple_form_for [@property, @booking] do |f| %>
+  <%= f.input :date, as: :datetime, label: 'date', html5: true %>
+  <%= f.submit 'Book this date' %>
+<% end %>
