@@ -70,18 +70,23 @@
 <div class="container">
   <h2 class="text-center mt-5 mb-4">Happy customers</h2>
 
-  <div class="card">
-    <div class="card-body">
-      <h5>Marty</h5>
-      <h3>Best service ever!</h3>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <h4>i can only recommend it to everyone ... no stress and super quality.</h4>
+
+  <% Review.all.sample(2).each do |review| %>
+    <div class="card">
+      <div class="card-body">
+        <h5><%= review.property_manager_name %> </h5>
+        <h3>Best service ever!</h3>
+        <% review.rating.times do |i| %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do |i| %>
+          <i class="far fa-star"></i>
+        <% end %>
+        <h4><%= review.description %> </h4>
+      </div>
     </div>
-  </div>
+  <% end %>
+
 </div>
 
 <div class="container">
