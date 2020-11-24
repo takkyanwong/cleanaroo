@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Describe a property to be cleaned</h1>
+
+  <%= simple_form_for [@property] do |f| %>
+    <%= f.input :property_type, as: :radio_buttons, collection: [['0', 'Apartment'], ['1', 'House']], label_method: :second, value_method: :first %>
+    <%= f.input :size, label: "Total m2", html5: true %>
+    <%= f.input :bedroom_count, label: "Bedroom", html5: true %>
+    <%= f.input :bathroom_count, label: "Bathroom", html5: true %>
+    <%= f.input :address, label: false, placeholder: "Enter your address" %>
+
+    <%=f.submit "Next", class: "button button-green" %>
+    <% end %>
+
+
+</div>
