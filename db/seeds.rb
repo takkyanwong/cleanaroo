@@ -53,6 +53,10 @@ El Prat de Llobregat
 
 tasks = ['Regular cleaning', 'Carpet cleaning', 'Windows cleaning', 'Feed the bird', 'Water the plants', 'Wash the clothes']
 
+titles = ['Best service ever!', 'Can recommend Cleanaroo to everyone!', 'Get the best cleaners in Barcelona']
+
+descriptions = ['Excellent service. On time cleaning! Professional service provided', 'Took a while for a cleaner in our area to pop up, but once we had one booked in...', 'I have been having trouble finding competent cleaners, but with Cleanaroo it is easy peasy.']
+
 # Roles: 0 = Property Manager 1 = Cleaner //defined in User Model
 users = []
 names.each do |name|
@@ -75,29 +79,30 @@ cleaners = []
   user: users.sample,
   property_type: types.sample
 )
-  puts "#{property.address} #{property.user.name}" 
+  puts "#{property.address} #{property.user.name}"
 }
 
 # Seeding bookings
 10.times {
   booking = Booking.create!(
-    cost: rand(99..499),             
+    cost: rand(99..499),
     property: Property.all.sample,
     user: cleaners.sample,
     date: rand(1.month.ago..10.weeks.from_now).to_datetime,
     comment: "be good with my place"
   )
-  puts "#{booking.date} #{booking.user.name}" 
-}            
+  puts "#{booking.date} #{booking.user.name}"
+}
 
 # Seeding review
 10.times {
   review = Review.create!(
-    rating: rand(1..5), 
-    description: "Rate my work:",
+    rating: rand(1..5),
+    description: descriptions.sample,
+    title: titles.sample,
     booking: Booking.all.sample
   )
-  puts "#{review.description} #{review.rating}" 
+  puts "#{review.description} #{review.rating}"
 }
 
 # Seeding tasks
@@ -107,7 +112,7 @@ tasks.each do |task|
     price: rand(19..199)
   )
 
-  puts "#{task.title} #{task.price}" 
+  puts "#{task.title} #{task.price}"
 end
 
 # Seeding booking_tasks
@@ -118,9 +123,9 @@ Booking.all.each do |booking|
       booking: booking,
       task: tasks.pop # pop = take the last element of the array and delete it
     )
-    puts "#{booking_task.booking.user.name} 
-    #{booking_task.task.title} 
-    #{booking_task.booking.property.address} 
+    puts "#{booking_task.booking.user.name}
+    #{booking_task.task.title}
+    #{booking_task.booking.property.address}
     #{booking_task.booking.date}"
   }
 end
