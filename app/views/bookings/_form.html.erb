@@ -1,6 +1,9 @@
-<h1>Select your preferred date</h1>
+<div class="container">
+  <h2 class="text-center mb-4">Select your <br> preferred date</h2>
 
-<%= simple_form_for [@property, @booking] do |f| %>
-  <%= f.input :date, as: :datetime, label: 'date', html5: true %>
-  <%= f.submit 'Book this date' %>
-<% end %>
+  <%= simple_form_for [@property, @booking] do |f| %>
+    <%= f.input :date, as: :string, label: false, required: false, input_html: {class: "datepicker"} %>
+    <%= f.submit 'Next', class:'btn-dark' %>
+    <%= icon('fas', 'angle-right') %>
+  <% end %>
+</div>

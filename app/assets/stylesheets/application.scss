@@ -8,14 +8,21 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// Flatpickr Calendar
+@import "flatpickr/dist/flatpickr.css";
+@import "flatpickr/dist/themes/material_green";
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
 // general styling
-p, h1, h2, h3, h4, h5, body {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+body {
   margin: 0;
 }
-
-
-
