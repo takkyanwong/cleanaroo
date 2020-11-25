@@ -1,0 +1,64 @@
+// Property type
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tag-item {
+  flex: 0 0 48%;
+}
+
+.property-form {
+  position: absolute;
+  transform: scale(0);
+}
+
+.property-form + label {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px 40px;
+  color: $dark-blue;
+  border: 2px solid #27C6C7;
+  text-align: center;
+}
+
+.property-form:checked + label {
+  background-color: $green;
+  color: white;
+  font-weight: 800 !important;
+}
+
+// Property size, bedroom and bathroom
+.inline-input .form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inline-input .form-group .form-control {
+  width: 20%;
+}
+
+.inline-input hr {
+  background-color: $dark-blue;
+  opacity: 0.3;
+}
+
+.inline-input label {
+  margin-bottom: 0;
+}
+
+// Transparent form input Bedroom and Bathroom
+.input-transparent input {
+  background-color: transparent;
+  border: transparent;
+  &:focus {
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+  }
+}

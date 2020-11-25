@@ -1,15 +1,27 @@
 <div class="container">
-  <h1>Describe a property to be cleaned</h1>
+  <h1 class="text-center mb-3">Describe a property to be cleaned</h1>
 
   <%= simple_form_for [@property] do |f| %>
-    <%= f.input :property_type, as: :radio_buttons, collection: ['Apartment', 'House'] %>
-    <%= f.input :size, label: "Total m2", html5: true %>
-    <%= f.input :bedroom_count, label: "Bedroom", html5: true %>
-    <%= f.input :bathroom_count, label: "Bathroom", html5: true %>
+    <%= f.input :property_type, as: :radio_buttons, label: "Your Property", collection: ['Apartment', 'House'],
+                input_html: { class: "property-form" }, item_wrapper_class: 'tag-item',
+                collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper' %>
+
+    <div class="inline-input">
+      <%= f.input :size, label: "Total m2", html5: true %>
+      <hr>
+      <span class="input-transparent">
+        <i class="fas fa-minus"></i><%= f.input :bedroom_count, label: "Bedroom", html5: true %> <i class="fas fa-plus"></i>
+          <hr>
+          <%= f.input :bathroom_count, label: "Bathroom", html5: true %> <i class="fas fa-plus"></i>
+          <hr>
+      </span>
+    </div>
+
     <%= f.input :address, label: false, placeholder: "Enter your address" %>
 
-    <%=f.submit "Next", class: "button button-green" %>
+    <%=f.submit "Next", class: "btn-dark mt-4" %>
     <% end %>
 
-
 </div>
+
+<%= render 'shared/footer' %>
