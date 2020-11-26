@@ -27,8 +27,14 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { numberDown, numberUp } from '../components/button';
 
+// JS to decrease number of bedrooms and bathrooms
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  numberDown();
+});
+
+// JS to increase number of bedrooms and bathrooms
+document.addEventListener('turbolinks:load', () => {
+    numberUp();
 });

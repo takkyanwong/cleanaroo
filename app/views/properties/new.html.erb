@@ -9,18 +9,28 @@
     <div class="inline-input">
       <%= f.input :size, label: "Total m2", html5: true %>
       <hr>
+
       <span class="input-transparent">
-        <i class="fas fa-minus"></i><%= f.input :bedroom_count, label: "Bedroom", html5: true %> <i class="fas fa-plus"></i>
-          <hr>
-          <%= f.input :bathroom_count, label: "Bathroom", html5: true %> <i class="fas fa-plus"></i>
-          <hr>
+
+        <!--        Making font awesome clickable-->
+        <span class="clickable-fontAwesome"><i id="numberDown" class="fas fa-minus"></i></span>
+        <%= f.input :bedroom_count, label: "Bedroom", html5: true, input_html: { id: "numberRooms", min: "0", max: "15", value: "1" } %>
+        <!--        Making font awesome clickable-->
+        <span class="clickable-fontAwesome"><i id="numberUp" class="fas fa-plus"></i></span>
+        <hr>
+        <!--        Making font awesome clickable-->
+        <span class="clickable-fontAwesome"><i id="numberDown" class="fas fa-minus"></i></span>
+        <%= f.input :bathroom_count, label: "Bathroom", html5: true, input_html: { id: "numberRooms", min: "0", max: "15", value: "1" } %>
+        <!--        Making font awesome clickable-->
+        <span class="clickable-fontAwesome"><i id="numberUp" class="fas fa-plus"></i></span>
+        <hr>
       </span>
     </div>
 
     <%= f.input :address, label: false, placeholder: "Enter your address" %>
 
     <%=f.submit "Next", class: "btn-dark mt-4" %>
-    <% end %>
+  <% end %>
 
 </div>
 
