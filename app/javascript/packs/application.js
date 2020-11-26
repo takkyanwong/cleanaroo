@@ -28,6 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { numberDown, numberUp } from '../components/button';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
@@ -39,4 +40,9 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
     numberDown("#numberDownBath", "#numberBathRooms");
     numberUp("#numberUpBath", "#numberBathRooms");
+});
+
+// JS to autocomplete the address
+document.addEventListener('turbolinks:load', () => {
+    initAutocomplete();
 });
