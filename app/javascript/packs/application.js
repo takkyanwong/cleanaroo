@@ -29,12 +29,14 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { numberDown, numberUp } from '../components/button';
 
-// JS to decrease number of bedrooms and bathrooms
+// JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
-  numberDown();
+  numberDown("#numberDownBed", "#numberBedRooms");
+  numberUp("#numberUpBed", "#numberBedRooms");
 });
 
-// JS to increase number of bedrooms and bathrooms
+// JS to +/- number of Bathrooms
 document.addEventListener('turbolinks:load', () => {
-    numberUp();
+    numberDown("#numberDownBath", "#numberBathRooms");
+    numberUp("#numberUpBath", "#numberBathRooms");
 });

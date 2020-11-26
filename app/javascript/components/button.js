@@ -1,24 +1,16 @@
-const numberDown = () => {
-    const minusBtn = document.querySelectorAll("#numberDown");
-    minusBtn.forEach((btnDown) => {
-        btnDown.addEventListener("click", () => {
-            let numDown = document.querySelectorAll("#numberRooms");
-            numDown.forEach((nDown) =>{
-                nDown.stepDown();
-            });
-        });
+const numberDown = (selector1, selector2) => {
+    const minusBtn = document.querySelector(selector1);
+    minusBtn.addEventListener("click", () => {
+        let numDown = document.querySelector(selector2);
+        numDown.stepDown();
     });
 };
 
-const numberUp = () => {
-    const plusBtn = document.querySelectorAll("#numberUp");
-    plusBtn.forEach((btnUp) => {
-        btnUp.addEventListener("click", () => {
-            let numUp= document.querySelectorAll("#numberRooms");
-            numUp.forEach((nUp) => {
-                nUp.stepUp();
-            });
-        });
+const numberUp = (selector1, selector2) => {
+    const plusBtn = document.querySelector(selector1);
+    plusBtn.addEventListener("click", () => {
+        let numUp= document.querySelector(selector2);
+        numUp.stepUp();
     });
 };
 
