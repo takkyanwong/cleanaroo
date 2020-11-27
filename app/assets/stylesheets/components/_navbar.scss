@@ -24,7 +24,7 @@ $viewport_size: (s: 320px,
 }
 
 /* default behaviour to hide desktop options */
-.menu__desktop {
+.desktop__menu {
   display: none;
 }
 
@@ -34,7 +34,7 @@ $viewport_size: (s: 320px,
     display: none;
   }
 
-  .menu__desktop {
+  .desktop__menu {
     display: flex;
     justify-content: center;
     list-style-type: none;
