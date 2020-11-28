@@ -10,7 +10,7 @@ $viewport_size: (s: 320px,
   padding: 10px 20px;
   background: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   border-bottom: .5px solid lightgrey;
   margin-bottom: 80px;
   align-items: center;
@@ -18,9 +18,17 @@ $viewport_size: (s: 320px,
 
 /* logo */
 .cleanaroo__logo {
-  left: 20px;
-  position: absolute;
-  align-self: center;
+  display: flex;
+  align-items: center;
+
+  h3 {
+    color: $dark-blue;
+    margin-left: 10px;
+  }
+
+  img {
+    width: 40px;
+  }
 }
 
 /* default behaviour to hide desktop options */
@@ -51,6 +59,7 @@ $viewport_size: (s: 320px,
 
 /* page-wrapper tied to JS to exit side menu when clicked */
 #page-wrapper {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -69,7 +78,7 @@ $viewport_size: (s: 320px,
 
   div {
     width: 35px;
-    height: 2px;
+    height: 3px;
     margin-bottom: 8px;
     background-color: $green;
     transition: transform 500ms $easing, opacity 500ms, background-color 250ms;
@@ -78,14 +87,14 @@ $viewport_size: (s: 320px,
 
 /* trigger animation when burger menu is clicked */
 .burger__btn.active {
-  right: 230px;
+  right: 15px;
 
   div {
     background-color: $green;
   }
 
   .burger__top {
-    transform: translateY(10px) rotate(-135deg);
+    transform: translateY(12px) rotate(-135deg);
   }
 
   .burger__middle {
@@ -111,6 +120,18 @@ $viewport_size: (s: 320px,
   height: 100%;
   background-color: $bright-green;
   transition: all 350ms $easing;
+  display: flex;
+
+  .sidebar__avatar {
+    display: flex;
+    height: 40px;
+    margin-top: 5px;
+    align-items: center;
+
+    h3 {
+      color: $dark-blue;
+    }
+  }
 }
 
 .side__menu.active {
@@ -119,25 +140,22 @@ $viewport_size: (s: 320px,
 }
 
 .side__menu__items {
-  position: relative;
-  top: 25%;
+  position: absolute;
+  top: 20%;
   transform: translateY(-50%);
   list-style-type: none;
+
+  li {
+    margin-top: 20px;
+  }
 
   .mobile__menu__item {
     position: relative;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2em;
-    padding: 15px 30px;
     transition: all 250ms;
     color: $dark-blue;
 
-
-    &:hover {
-      padding: 5px 45px;
-      background-color: transparentize($green, .8);
-    }
   }
 }
 

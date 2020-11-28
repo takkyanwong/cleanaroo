@@ -1,23 +1,56 @@
 <div class="topnav-cleanaroo">
-  <div id="page-wrapper"></div>
-  <a href="#home" class="cleanaroo__logo">Logo</a>
-  <div class="desktop__menu">
-    <a href="#login" class="desktop__menu__item">Login</a>
-    <a href="#sign_up" class="desktop__menu__item">Sign-up</a>
-    <a href="#help" class="desktop__menu__item">Help</a>
-    <a href="#about_us" class="desktop__menu__item">About us</a>
+    <%= link_to root_path, class: "cleanaroo__logo" do %>
+      <%= image_tag "logo.png" %>
+      <h3>cleanaroo</h3>
+    <% end %>
   </div>
-  <div class="burger__btn">
-    <div class='burger__top'></div>
-    <div class='burger__middle'></div>
-    <div class='burger__bottom'></div>
-  </div>
-  <div class="side__menu">
-    <ul class="side__menu__items">
-      <li><a href="" class="mobile__menu__item">Login</a></li>
-      <li><a href="" class="mobile__menu__item">Sign-up</a></li>
-      <li><a href="" class="mobile__menu__item">Help</a></li>
-      <li><a href="" class="mobile__menu__item">About Us</a></li>
-    </ul>
-  </div>
+
+  <% if user_signed_in? %>
+    <div class="desktop__menu">
+      <span>Hello, <%= "#{current_user.name}" %></span>
+      <h3><%= link_to "Dashboard", root_path, class: "desktop__menu__item" %></h3>
+    </div>
+    <div class="burger__btn">
+      <div class='burger__top'></div>
+      <div class='burger__middle'></div>
+      <div class='burger__bottom'></div>
+    </div>
+    <div class="side__menu">
+      <div class="sidebar__avatar">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+        <h3>Hello, <%= "#{current_user.name}" %></h3>
+      </div>
+      <ul class="side__menu__items">
+        <li>
+          <h2><%= link_to "Dashboard", "#", class: "mobile__menu__item" %></h2>
+        </li>
+        <li>
+          <h2><%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "mobile__menu__item" %></h2>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="burger__btn">
+      <div class='burger__top'></div>
+      <div class='burger__middle'></div>
+      <div class='burger__bottom'></div>
+    </div>
+    <div class="side__menu">
+      <div class="sidebar__avatar">
+        <%= image_tag "guest.png", class: "avatar" %>
+        <h3>Hello, Guest User</h3>
+      </div>
+      <ul class="side__menu__items">
+        <li>
+          <h2><%= link_to "Log-in", new_user_session_path, class: "mobile__menu__item" %></h2>
+        </li>
+        <li>
+          <h2><%= link_to "Sign-up", new_user_registration_path, class: "mobile__menu__item" %></h2>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+
 </div>
+
+<div id="page-wrapper"></div>
