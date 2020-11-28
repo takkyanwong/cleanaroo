@@ -16,7 +16,17 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def edit
+    @property = Property.find(params[:id])
+  end
 
+  def update
+    @property = Property.find(params[:id])
+    @property.update(params[property_params])
+
+    redirect_to dashboard_path
+
+  end
   private
 
   def property_params

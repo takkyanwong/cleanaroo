@@ -63,19 +63,19 @@
         <div class="card card-dashboard">
           <div class="card-body">
             <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-calendar"></i></div>
+              <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
               <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
             </div>
             <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-clock"></i></div>
+              <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
               <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
             </div>
             <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
               <h3 class="ml-3"><%= booking.property.address %></h3>
             </div>
             <div class="card-item">
-              <div class="card-icon-container"> <i class="fas fa-euro-sign"></i></div>
+              <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
               <h3 class="ml-3"><%= booking.cost %> </h3>
             </div>
             <h4 class="mt-3 mb-1">Service details:</h4>
@@ -84,7 +84,7 @@
             <% end %>
 
             <%= link_to "Clean again", "#", class:"btn-dark mt-4"%>
-            <%= link_to "Leave a review", "#", class:"btn-green mt-2"%>
+            <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
 
           </div>
         </div>
@@ -109,7 +109,7 @@
             <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bedroom_count, 'Bedroom') %> </h4>
             <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bathroom_count, 'Bathroom') %></h4>
             <div class="card-item card-button mt-4">
-              <%= link_to "Edit", "#", class:"btn-green mr-1"%>
+              <%= link_to "Edit", edit_property_path(property), class:"btn-green mr-1"%>
               <%= link_to "Delete", "#", class:"btn-green ml-1"%>
             </div>
             <%= link_to "Request cleaning", "#", class:"btn-dark mt-2"%>
@@ -120,3 +120,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/dashboard_footer_properties' %>
