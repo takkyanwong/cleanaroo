@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @property = Property.find(params[:property_id])
+
+    @step_two = true
   end
 
   def create

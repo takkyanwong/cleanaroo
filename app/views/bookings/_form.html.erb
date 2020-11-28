@@ -1,15 +1,8 @@
 <div class="container">
-
-<%= render 'shared/progressbar' %>
-
+  <%= render 'shared/progressbar' %>
   <h2 class="text-center mb-4">Select your <br> preferred date</h2>
-
   <%= simple_form_for [@property, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, required: false, input_html: {class: "datepicker"} %>
-    <div class="btn-dark d-flex justify-content-between align-items-center">
-      <s> </s>
-      <%= f.submit 'Next', class:'btn-submit' %>
-      <i class="fas fa-angle-right"></i>
-    </div>
+    <%= render 'shared/form_next', f: f %>
   <% end %>
 </div>
