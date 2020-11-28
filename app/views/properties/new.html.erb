@@ -1,4 +1,6 @@
 <div class="container">
+  <%= render 'shared/progressbar' %>
+
   <h2 class="text-center mt-4 mb-5">Describe a property<br>to be cleaned</h2>
 
   <%= simple_form_for [@property] do |f| %>
@@ -41,7 +43,7 @@
 
     <%= f.input :address, label: false, placeholder: "Enter your address" %>
 
-    <%=f.submit "Next", class: "btn-dark mt-5" %>
+    <%= render 'shared/form_next', f: f %>
   <% end %>
 
 </div>
