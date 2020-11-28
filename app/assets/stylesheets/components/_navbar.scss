@@ -1,12 +1,169 @@
-.navbar-lewagon {
-  justify-content: space-between;
+$easing: cubic-bezier(.6, .05, .28, .91);
+
+$viewport_size: (s: 320px,
+  m: 768px,
+  l: 1200px);
+
+/* navbar */
+.topnav-cleanaroo {
+  height: 80px;
+  padding: 10px 20px;
   background: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: .5px solid lightgrey;
+  margin-bottom: 80px;
+  align-items: center;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* logo */
+.cleanaroo__logo {
+  display: flex;
+  align-items: center;
+
+  h3 {
+    color: $dark-blue;
+    margin-left: 10px;
+  }
+
+  img {
+    width: 40px;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+/* default behaviour to hide desktop options */
+.desktop__menu {
+  display: none;
+}
+
+/* media query to only show desktop version if width is > 1200px */
+@media (min-width: map-get($viewport_size, l)) {
+  .burger__btn {
+    display: none;
+  }
+
+  .desktop__menu {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+  }
+}
+
+.desktop__menu__item {
+  padding: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* page-wrapper tied to JS to exit side menu when clicked */
+#page-wrapper {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* burger menu */
+.burger__btn {
+  position: fixed;
+  z-index: 5;
+  top: 30px;
+  right: 15px;
+  cursor: pointer;
+  transition: left 500ms $easing;
+
+  div {
+    width: 35px;
+    height: 3px;
+    margin-bottom: 8px;
+    background-color: $green;
+    transition: transform 500ms $easing, opacity 500ms, background-color 250ms;
+  }
+}
+
+/* trigger animation when burger menu is clicked */
+.burger__btn.active {
+  right: 15px;
+
+  div {
+    background-color: $green;
+  }
+
+  .burger__top {
+    transform: translateY(12px) rotate(-135deg);
+  }
+
+  .burger__middle {
+    opacity: 0;
+    transform: rotate(135deg);
+  }
+
+  .burger__bottom {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+/* side menu itself */
+.side__menu {
+  position: fixed;
+  z-index: 4;
+  overflow: auto;
+  top: 0px;
+  right: -300px;
+  width: 300px;
+  opacity: 0;
+  padding: 20px 0px;
+  height: 100%;
+  background-color: $bright-green;
+  transition: all 350ms $easing;
+  display: flex;
+
+  .sidebar__avatar {
+    display: flex;
+    height: 40px;
+    margin-top: 5px;
+    align-items: center;
+
+    h3 {
+      color: $dark-blue;
+    }
+  }
+}
+
+.side__menu.active {
+  right: 0px;
+  opacity: 1;
+}
+
+.side__menu__items {
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  list-style-type: none;
+
+  li {
+    margin-top: 20px;
+  }
+
+  .mobile__menu__item {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 250ms;
+    color: $dark-blue;
+
+  }
+}
+
+.burger__btn,
+.burger__btn * {
+  will-change: transform;
+}
+
+.side__menu {
+  will-change: transform, opacity;
 }

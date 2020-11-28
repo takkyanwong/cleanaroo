@@ -1,0 +1,56 @@
+<div class="topnav-cleanaroo">
+    <%= link_to root_path, class: "cleanaroo__logo" do %>
+      <%= image_tag "logo.png" %>
+      <h3>cleanaroo</h3>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="desktop__menu">
+      <span><%= "#{current_user.name}" %></span>
+      <h3><%= link_to "Dashboard", root_path, class: "desktop__menu__item" %></h3>
+    </div>
+    <div class="burger__btn">
+      <div class='burger__top'></div>
+      <div class='burger__middle'></div>
+      <div class='burger__bottom'></div>
+    </div>
+    <div class="side__menu">
+      <div class="sidebar__avatar">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+        <h3>Hello, <%= "#{current_user.name}" %></h3>
+      </div>
+      <ul class="side__menu__items">
+        <li>
+          <h2><%= link_to "Dashboard", "#", class: "mobile__menu__item" %></h2>
+        </li>
+        <li>
+          <h2><%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "mobile__menu__item" %></h2>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="burger__btn">
+      <div class='burger__top'></div>
+      <div class='burger__middle'></div>
+      <div class='burger__bottom'></div>
+    </div>
+    <div class="side__menu">
+      <div class="sidebar__avatar">
+        <%= image_tag "guest.png", class: "avatar" %>
+        <h3>Guest User</h3>
+      </div>
+      <ul class="side__menu__items">
+        <li>
+          <h2><%= link_to "Log-in", new_user_session_path, class: "mobile__menu__item" %></h2>
+        </li>
+        <li>
+          <h2><%= link_to "Sign-up", new_user_registration_path, class: "mobile__menu__item" %></h2>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
+
+<div id="page-wrapper"></div>

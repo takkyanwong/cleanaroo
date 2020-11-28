@@ -34,6 +34,35 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+	const sidebarBox = document.querySelector('.side__menu'),
+			sidebarBtn = document.querySelector('.burger__btn'),
+			pageWrapper = document.querySelector('#page-wrapper');
+
+	sidebarBtn.addEventListener('click', event => {
+			sidebarBtn.classList.toggle('active');
+			sidebarBox.classList.toggle('active');
+			pageWrapper.style.display = 'block';
+	});
+
+	pageWrapper.addEventListener('click', event => {
+
+			if (sidebarBox.classList.contains('active')) {
+					sidebarBtn.classList.remove('active');
+					sidebarBox.classList.remove('active');
+					pageWrapper.style.display = 'none';
+			}
+	});
+
+	window.addEventListener('keydown', event => {
+
+			if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+					sidebarBtn.classList.remove('active');
+					sidebarBox.classList.remove('active');
+					pageWrapper.style.display = 'none';
+			}
+	});
   numberDown("#numberDownBed", "#numberBedRooms");
   numberUp("#numberUpBed", "#numberBedRooms");
 });
