@@ -31,6 +31,7 @@ import "../plugins/flatpickr"
 // import { initSelect2 } from '../components/init_select2';
 import { numberDown, numberUp } from '../components/button';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initStarRating } from '../plugins/init_star_rating';
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
@@ -48,6 +49,8 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
     initAutocomplete();
 });
+
+initStarRating();
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
