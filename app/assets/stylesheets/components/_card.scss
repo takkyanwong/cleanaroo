@@ -1,6 +1,7 @@
 .card {
   border-radius: 16px;
   border: 0.5px solid #1F2933;
+  margin: 15px 0;
 }
 
 .card h4 {
@@ -9,4 +10,20 @@
 
 .card i {
   color: $green;
+}
+
+.card h3 {
+  margin: 0 0 5px 0,
+}
+
+.card-item {
+  display: flex;
+}
+
+i.grey{
+  color: #7B8794;
+}
+
+.card-icon-container {
+  width: 20px;
 }

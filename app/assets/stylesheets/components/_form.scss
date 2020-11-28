@@ -1,0 +1,89 @@
+// Property type
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tag-item {
+  flex: 0 0 48%;
+}
+
+.property-form {
+  position: absolute;
+  transform: scale(0);
+}
+
+.property-form + label {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px 40px;
+  color: $dark-blue;
+  border: 2px solid #27C6C7;
+  text-align: center;
+}
+
+.property-form:checked + label {
+  background-color: $green;
+  color: white;
+  font-weight: 800 !important;
+}
+
+// Property size, bedroom and bathroom
+.inline-input .form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inline-input .form-group .form-control {
+  width: 26%;
+}
+
+.inline-input hr {
+  background-color: $dark-blue;
+  opacity: 0.3;
+}
+
+.inline-input label {
+  margin-bottom: 0;
+}
+
+// Transparent form input Bedroom and Bathroom
+.input-transparent input {
+  border: transparent;
+  &:focus {
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+  }
+}
+
+.clickable-fontAwesome {
+  display: inline-block;
+  cursor: pointer;
+  border: 0.5px solid $dark-blue;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+// Plus and minus icon
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#numberBedRooms {
+  text-align: center;
+}
+
+#numberBathRooms {
+  text-align: center;
+}
