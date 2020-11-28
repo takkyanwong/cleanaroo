@@ -3,9 +3,9 @@
     <h1 class="mb-5 text-center"> We are curious about your experience</h1>
     <div class="new-form" id="surrounding">
       <%= simple_form_for [@booking, @review] do |f| %>
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+        <%= f.input :title, :label => "How was your service?" %>
+        <%= f.input :description, :label => "More details:" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your service:" %>
         <%=f.submit "Send", class: "btn-dark" %>
 
       <% end %>
