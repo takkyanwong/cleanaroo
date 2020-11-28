@@ -27,8 +27,22 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { numberDown, numberUp } from '../components/button';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
+// JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  numberDown("#numberDownBed", "#numberBedRooms");
+  numberUp("#numberUpBed", "#numberBedRooms");
+});
+
+// JS to +/- number of Bathrooms
+document.addEventListener('turbolinks:load', () => {
+    numberDown("#numberDownBath", "#numberBathRooms");
+    numberUp("#numberUpBath", "#numberBathRooms");
+});
+
+// JS to autocomplete the address
+document.addEventListener('turbolinks:load', () => {
+    initAutocomplete();
 });
