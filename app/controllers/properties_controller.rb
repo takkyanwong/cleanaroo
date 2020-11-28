@@ -3,6 +3,8 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+
+    @step_one = true    
   end
 
   def create
