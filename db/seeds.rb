@@ -53,6 +53,10 @@ El Prat de Llobregat
 
 tasks = ['Regular cleaning', 'Carpet cleaning', 'Windows cleaning', 'Feed the bird', 'Water the plants', 'Wash the clothes']
 
+titles = ['Best service ever!', 'Can recommend Cleanaroo to everyone!', 'Get the best cleaners in Barcelona']
+
+descriptions = ['Excellent service. On time cleaning! Professional service provided', 'Took a while for a cleaner in our area to pop up, but once we had one booked in...', 'I have been having trouble finding competent cleaners, but with Cleanaroo it is easy peasy.']
+
 # Roles: 0 = Property Manager 1 = Cleaner //defined in User Model
 users = []
 names.each do |name|
@@ -94,7 +98,8 @@ cleaners = []
 10.times {
   review = Review.create!(
     rating: rand(1..5),
-    description: "Rate my work:",
+    description: descriptions.sample,
+    title: titles.sample,
     booking: Booking.all.sample
   )
   puts "#{review.description} #{review.rating}"

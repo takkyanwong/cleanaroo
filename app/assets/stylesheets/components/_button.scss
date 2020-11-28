@@ -9,13 +9,13 @@
   letter-spacing: 1.25px;
   font-style: normal;
   display: block;
-  padding: 14px 0;
+  padding: 14px 24px;
 }
 
 .btn-dark {
   @extend %btn;
   background-color: $dark-blue;
-  border: 0.5px solid #323F4B;
+  border: 0.5px solid #323f4b;
   color: white;
 }
 
@@ -23,7 +23,7 @@
   @extend %btn;
   background-color: $bright-green;
   color: $dark-blue;
-  border: 1px solid #27C6C7;
+  border: 1px solid #27c6c7;
 }
 
 .btn-container {
@@ -33,4 +33,16 @@
   left: 0;
   padding-left: inherit;
   padding-right: inherit;
+}
+
+.btn-submit {
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 0;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
 }
