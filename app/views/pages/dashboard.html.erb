@@ -109,7 +109,7 @@
             <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bedroom_count, 'Bedroom') %> </h4>
             <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bathroom_count, 'Bathroom') %></h4>
             <div class="card-item card-button mt-4">
-              <%= link_to "Edit", "#", class:"btn-green mr-1"%>
+              <%= link_to "Edit", edit_property_path(property), class:"btn-green mr-1"%>
               <%= link_to "Delete", "#", class:"btn-green ml-1"%>
             </div>
             <%= link_to "Request cleaning", "#", class:"btn-dark mt-2"%>
