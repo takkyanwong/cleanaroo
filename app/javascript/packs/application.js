@@ -34,8 +34,23 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  numberDown("#numberDownBed", "#numberBedRooms");
+	numberUp("#numberUpBed", "#numberBedRooms");
+});
+
+// JS to +/- number of Bathrooms
+document.addEventListener('turbolinks:load', () => {
+    numberDown("#numberDownBath", "#numberBathRooms");
+    numberUp("#numberUpBath", "#numberBathRooms");
+});
+
+// JS to autocomplete the address
+document.addEventListener('turbolinks:load', () => {
+    initAutocomplete();
+});
+
+// Navbar Side Menu Behaviour
+document.addEventListener('turbolinks:load', () => {
 	const sidebarBox = document.querySelector('.side__menu'),
 			sidebarBtn = document.querySelector('.burger__btn'),
 			pageWrapper = document.querySelector('#page-wrapper');
@@ -63,17 +78,5 @@ document.addEventListener('turbolinks:load', () => {
 					pageWrapper.style.display = 'none';
 			}
 	});
-  numberDown("#numberDownBed", "#numberBedRooms");
-  numberUp("#numberUpBed", "#numberBedRooms");
 });
 
-// JS to +/- number of Bathrooms
-document.addEventListener('turbolinks:load', () => {
-    numberDown("#numberDownBath", "#numberBathRooms");
-    numberUp("#numberUpBath", "#numberBathRooms");
-});
-
-// JS to autocomplete the address
-document.addEventListener('turbolinks:load', () => {
-    initAutocomplete();
-});
