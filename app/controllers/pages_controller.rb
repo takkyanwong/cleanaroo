@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
   end
@@ -7,5 +7,9 @@ class PagesController < ApplicationController
   def dashboard
     @past_bookings = current_user.past_bookings
     @upcoming_bookings = current_user.upcoming_bookings
+  end
+
+  def success
+    @booking = Booking.find(params[:booking_id])
   end
 end

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="success__icon"><i class="far fa-check-circle"></i></div>
+  <h2 class="text-center">Congratulations!</h2>
+  <h2 class="text-center mt-5 mb-4">You have successfully booked your cleaner</h2>
+  <div class="card card-success">
+    <div class="card-body">
+      <div class="card-item">
+        <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
+        <h3 class="ml-3"><%= @booking.date.strftime("%d/%m/%Y") %> </h3>
+      </div>
+      <div class="card-item">
+        <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
+        <h3 class="ml-3"><%= @booking.date.strftime("%H:%M") %> </h3>
+        </div>
+      <div class="card-item">
+        <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
+        <h3 class="ml-3"><%= @booking.property.address %></h3>
+      </div>
+      <div class="card-item">
+        <div class="card-icon-container"><i class="fas fa-euro-sign fa-fw"></i></div>
+        <h3 class="ml-3"><%= @booking.cost %> </h3>
+      </div>
+    </div>
+  </div>
+  <%= link_to "MY CLEANAROO", dashboard_path, class:"btn-dark mt-4" %>
+</div>
+<%= render 'shared/footer' %>
