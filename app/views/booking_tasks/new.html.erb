@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="mt-4 mb-5 text-center">TODO list</h2>
+
+  <%= simple_form_for [@booking, @booking_task] do |f| %>
+    <%= f.input_field :task, as: :check_boxes, collection: Task.pluck(:title),
+
+                class: "property-form", item_wrapper_class: 'tag-item',
+                collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper' %>
+
+    <%= f.simple_fields_for :booking do |booking| %>
+      <h5 class="mt-5 mb-3">Any comments to the cleaner?</h5>
+      <%= booking.input :comment, as: :text, label: false %>
+    <% end %>
+
+    <%=f.submit "Find my cleaner", class: "btn-dark mt-5" %>
+  <% end %>
+</div>
+
+<%= render 'shared/footer' %>
