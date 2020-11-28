@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
   end
@@ -10,6 +10,10 @@ class PagesController < ApplicationController
   end
 
   def match
+    @booking = Booking.find(params[:booking_id])
+  end
+
+  def success
     @booking = Booking.find(params[:booking_id])
   end
 end
