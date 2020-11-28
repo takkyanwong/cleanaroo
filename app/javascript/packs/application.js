@@ -46,3 +46,8 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
     initAutocomplete();
 });
+
+// star rating
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
