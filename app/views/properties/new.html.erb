@@ -1,37 +1,52 @@
 <div class="container">
-  <h1 class="text-center mb-3">Describe a property to be cleaned</h1>
+  <h2 class="text-center mt-4 mb-5">Describe a property<br>to be cleaned</h2>
 
   <%= simple_form_for [@property] do |f| %>
-    <%= f.input :property_type, as: :radio_buttons, label: "Your Property", collection: ['Apartment', 'House'],
-                input_html: { class: "property-form" }, item_wrapper_class: 'tag-item',
+    <h3 class="mb-2">Your property</h3>
+    <%= f.input_field :property_type, as: :radio_buttons, collection: ['Apartment', 'House'],
+                class: "property-form", item_wrapper_class: 'tag-item',
                 collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper' %>
 
-    <div class="inline-input">
+    <div class="inline-input mt-5 mb-4">
       <%= f.input :size, label: "Total m2", html5: true %>
+
       <hr>
 
       <span class="input-transparent">
+        <div class="form-container">
+          <%= f.label :bedroom_count, label: "Bedroom", html5: true %>
+          <div class="plus-minus">
+            <span class="clickable-fontAwesome"><i id="numberDownBed" class="fas fa-minus fa-xs"></i></span>
+            <%= f.input_field :bedroom_count,  html5: true, id: "numberBedRooms", min: "0", max: "15", value: "1" %>
+            <span class="clickable-fontAwesome"><i id="numberUpBed" class="fas fa-plus fa-xs"></i></span>
+          </div>
+        </div>
 
-        <!--        Making font awesome clickable-->
-        <span class="clickable-fontAwesome"><i id="numberDownBed" class="fas fa-minus"></i></span>
-        <%= f.input :bedroom_count, label: "Bedroom", html5: true, input_html: { id: "numberBedRooms", min: "0", max: "15", value: "1" } %>
-        <!--        Making font awesome clickable-->
-        <span class="clickable-fontAwesome"><i id="numberUpBed" class="fas fa-plus"></i></span>
         <hr>
-        <!--        Making font awesome clickable-->
-        <span class="clickable-fontAwesome"><i id="numberDownBath" class="fas fa-minus"></i></span>
-        <%= f.input :bathroom_count, label: "Bathroom", html5: true, input_html: { id: "numberBathRooms", min: "0", max: "15", value: "1" } %>
-        <!--        Making font awesome clickable-->
-        <span class="clickable-fontAwesome"><i id="numberUpBath" class="fas fa-plus"></i></span>
+
+        <div class="form-container">
+          <%= f.label :bathroom_count, label: "Bathroom", html5: true %>
+          <div class="plus-minus">
+            <span class="clickable-fontAwesome"><i id="numberDownBath" class="fas fa-minus fa-xs"></i></span>
+            <%= f.input_field :bathroom_count, html5: true, id: "numberBathRooms", min: "0", max: "15", value: "1" %>
+            <span class="clickable-fontAwesome"><i id="numberUpBath" class="fas fa-plus fa-xs"></i></span>
+          </div>
+
+        </div>
+
         <hr>
+
       </span>
     </div>
 
     <%= f.input :address, label: false, placeholder: "Enter your address" %>
 
-    <%=f.submit "Next", class: "btn-dark mt-4" %>
+    <%=f.submit "Next", class: "btn-dark mt-5" %>
   <% end %>
 
 </div>
 
 <%= render 'shared/footer' %>
+
+
+

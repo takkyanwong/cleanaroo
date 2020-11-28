@@ -41,7 +41,7 @@
 }
 
 .inline-input .form-group .form-control {
-  width: 20%;
+  width: 26%;
 }
 
 .inline-input hr {
@@ -55,7 +55,6 @@
 
 // Transparent form input Bedroom and Bathroom
 .input-transparent input {
-  background-color: transparent;
   border: transparent;
   &:focus {
     background-color: transparent;
@@ -64,5 +63,27 @@
 }
 
 .clickable-fontAwesome {
+  display: inline-block;
   cursor: pointer;
+  border: 0.5px solid $dark-blue;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+// Plus and minus icon
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#numberBedRooms {
+  text-align: center;
+}
+
+#numberBathRooms {
+  text-align: center;
 }
