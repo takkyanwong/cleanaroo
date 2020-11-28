@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
   get "/dashboard", to: 'pages#dashboard'
 
+
+  resources :properties, only: [:new, :create, :edit, :update]
+
   resources :bookings, only: [] do
+    resources :reviews, only: [:new, :create]
     get "/match", to: 'pages#match'
   end
 end
