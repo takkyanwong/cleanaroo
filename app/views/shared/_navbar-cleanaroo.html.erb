@@ -22,7 +22,7 @@
       </div>
       <ul class="side__menu__items">
         <li>
-          <h2><%= link_to "Dashboard", "#", class: "mobile__menu__item" %></h2>
+          <h2><%= link_to "Dashboard", dashboard_path, class: "mobile__menu__item" %></h2>
         </li>
         <li>
           <h2><%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "mobile__menu__item" %></h2>
