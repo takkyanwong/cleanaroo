@@ -1,0 +1,28 @@
+
+<div class="navbar"></div>
+
+<div class="container">
+  <h2 class="text-center mb-4">We found your cleaner!</h2>
+
+  <div class="text-center">
+    <%= image_tag "mr-clean.png", class:"avatar-large-match" %>  
+    <p>*****</p>
+    <p>Jamile </p>
+    <p>Total price: 50€</p> 
+    <%# replace by Booking.price %> 
+  </div>
+
+      <div class="card-body">
+        <div class="card-detail">
+            <h4 class="mt-3 mb-1">Service details</h4>
+              <% @booking.booking_tasks.each do |t| %>
+                <h4 class="mb-1"> <i class="fas fa-check"></i> <%= t.task.title %></h4>
+              <% end %>
+        </div>
+      </div>
+
+    <%= link_to "Book Now", "#", class:"btn-dark mt-4"%>
+
+</div>
+
+<%= render 'shared/footer' %>

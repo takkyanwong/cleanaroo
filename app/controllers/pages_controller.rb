@@ -8,4 +8,10 @@ class PagesController < ApplicationController
     @past_bookings = current_user.past_bookings
     @upcoming_bookings = current_user.upcoming_bookings
   end
+
+  def match
+    @booking = Booking.find(params[:booking_id])
+  end
 end
+
+

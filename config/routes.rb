@@ -7,4 +7,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   get "/dashboard", to: 'pages#dashboard'
+
+  resources :bookings, only: [] do
+    get "/match", to: 'pages#match'
+  end
 end
