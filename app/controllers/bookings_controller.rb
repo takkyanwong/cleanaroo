@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :new, :create ]
+  skip_before_action :authenticate_user!, only: %i[new create]
 
   def new
     @booking = Booking.new
@@ -10,17 +10,17 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @user = User.where(role:1).sample # TODO: assign cleaner based on availability and location
-    @booking.user = @user 
+    @user = User.where(role: 1).sample # TODO: assign cleaner based on availability and location
+    @booking.user = @user
     @property = Property.find(params[:property_id])
-    @booking.property = @property 
+    @booking.property = @property
 
     if @booking.save
       redirect_to root_path
     else
       render :new
     end
-  end 
+  end
 
   private
 
