@@ -2,7 +2,11 @@
   <div class="success__icon"><i class="far fa-check-circle"></i></div>
   <h2 class="text-center">Congratulations!</h2>
   <h2 class="text-center mt-5 mb-4">You have successfully booked your cleaner</h2>
-  <div class="card card-success">
+  <div class="card-success">
+    <div class="cleaner__info">
+      <%= image_tag "guest.png", class: "avatar-bordered" %>
+      <h4><%= @booking.user.name %></h4>
+    </div>
     <div class="card-body">
       <div class="card-item">
         <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
