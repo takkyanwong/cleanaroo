@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.property = @property
 
     if @booking.save
-      redirect_to root_path
+      redirect_to new_booking_booking_task_path(@booking)
     else
       render :new
     end

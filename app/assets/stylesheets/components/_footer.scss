@@ -2,6 +2,13 @@
   text-align: center;
   margin-top: 56px;
   margin-bottom: 16px;
+  & a {
+    color: $dark-blue;
+    &:hover {
+      color: $light-gray;
+      text-decoration: none;
+    }
+  }
 }
 
 .icons a i {
