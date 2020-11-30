@@ -16,15 +16,19 @@
 }
 
 .property-form + label {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   font-size: 16px;
   border-radius: 8px;
   width: 100%;
+  height: 100%;
   padding: 16px 40px;
   color: $dark-blue;
   border: 2px solid #27C6C7;
   text-align: center;
+  margin: auto;
 }
 
 .property-form:checked + label {
@@ -86,6 +90,41 @@
 
 #numberBathRooms {
   text-align: center;
+}
+
+#new_booking_task .tag-item:first-of-type {
+  flex: 0 0 100%;
+}
+
+#new_booking_task .category-wrapper .tag-item:last-of-type {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#new_booking_task .category-wrapper .tag-item:last-of-type input {
+  transform: scale(1);
+  position: relative;
+  order: 1;
+}
+
+#new_booking_task .category-wrapper .tag-item:last-of-type label {
+  border: 0;
+  padding: 0;
+  order: 0;
+  justify-content: flex-start;
+}
+
+#new_booking_task .category-wrapper .tag-item:last-of-type input:checked + label {
+  background-color: transparent;
+  color: $dark-blue;
+  font-weight: 600 !important;
+}
+
+#booking_task_booking_comment {
+  height: 150px;
 }
 
 // Review
