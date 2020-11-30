@@ -22,7 +22,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-    @property.update(params[property_params])
+    @property.update(property_params)
 
     redirect_to dashboard_path
 
