@@ -25,6 +25,10 @@ class BookingTasksController < ApplicationController
     end
 
     booking.cost = cost
-    booking.save
+    if booking.save
+      redirect_to booking_match_path(booking)
+    else
+      render :new
+    end
   end
 end
