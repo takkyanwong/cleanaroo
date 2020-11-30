@@ -99,9 +99,14 @@
 }
 
 #new_booking_task .category-wrapper .tag-item:last-of-type input {
-  transform: scale(1);
   position: relative;
   order: 1;
+  transform: scale(1.7);
+  margin-right: 8px;
+}
+
+#new_booking_task .category-wrapper .tag-item:last-of-type input:checked {
+  filter: hue-rotate(-0.15turn) opacity(0.75);
 }
 
 #new_booking_task .category-wrapper .tag-item:last-of-type label {

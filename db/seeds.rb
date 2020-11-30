@@ -51,7 +51,7 @@ addresses = [ "Avenida Del Portal De L'Angel, 32-34
 El Prat de Llobregat
 08820 Barcelona, España." ]
 
-tasks = ['Regular cleaning', 'Carpet cleaning', 'Windows cleaning', 'Feed the bird', 'Water the plants', 'Cleaning supplies needed?']
+tasks = ['Regular cleaning', 'Carpet cleaning', 'Windows cleaning', 'Feed the bird', 'Water the plants', 'Cleaning supplies needed']
 
 titles = ['Best service ever!', 'Can recommend Cleanaroo to everyone!', 'Get the best cleaners in Barcelona']
 

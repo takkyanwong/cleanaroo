@@ -5,6 +5,8 @@ class BookingTasksController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @tasks = Task.all
     @booking_task = BookingTask.new
+
+    @step_three = true
   end
 
   def create
