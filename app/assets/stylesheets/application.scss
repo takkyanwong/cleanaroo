@@ -2,20 +2,28 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "jquery-bar-rating/dist/themes/css-stars";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// Flatpickr Calendar
+@import "flatpickr/dist/flatpickr.css";
+@import "flatpickr/dist/themes/material_green";
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
 // general styling
-p, h1, h2, h3, h4, h5, body {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+body {
   margin: 0;
 }
-
-
-

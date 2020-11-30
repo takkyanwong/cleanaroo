@@ -1,0 +1,41 @@
+.card-success {
+  display: flex;
+  background-color: white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 16px;
+  min-width: 320px;
+
+  i {
+    color: $green;
+  }
+
+  h3 {
+    color: $light-gray;
+  }
+}
+
+.cleaner__info {
+  padding: 0 0 0 1.5vh;
+
+  img {
+    display: block;
+    margin-top: 5vh;
+  }
+
+  h4 {
+    color: $light-gray;
+    text-align: center;
+    padding-top: 5px;
+  }
+}
+
+.success__icon {
+  text-align: center;
+
+  i {
+    font-size: 40px;
+    margin: 20px 0 50px 0;
+    color: $green;
+  }
+}

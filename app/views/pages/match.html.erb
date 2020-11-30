@@ -1,0 +1,28 @@
+<div class="navbar"></div>
+  <div class="container">
+    <h2 class="text-center mt-4 mb-4">We found your cleaner!</h2>
+    <div class="text-center">
+      <%= image_tag "mr-clean.png", class:"avatar-large-match mb-2" %>
+      <br>
+      <% @booking.user.reviews.sample(1).each do |review| %>
+        <% review.rating.times do |i| %>
+          <i class="fas fa-star"></i>
+          <% end %>
+      <% end %>
+      <h4><%= @booking.user.name  %></h4>
+      <br>
+      <h2>Total Price: <%= @booking.cost %>$</h2>
+    </div>
+    <div class="card">
+      <h2 class="mt-3 mb-1 text-center font-weight">Service details</h2>
+      <div class="card-body">
+        <% @booking.booking_tasks.each do |t| %>
+          <h4 class="mb-1"> <i class="fas fa-check"></i> <%= t.task.title %></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Book Now", booking_success_path, class:"btn-dark mt-4"%>
+</div>
+
+<%= render 'shared/footer' %>

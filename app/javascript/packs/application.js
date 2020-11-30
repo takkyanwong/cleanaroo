@@ -24,16 +24,19 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "../plugins/flatpickr"
+// import "flatpickr/dist/flatpickr.css"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { numberDown, numberUp } from '../components/button';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initStarRating } from '../plugins/init_star_rating';
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
   numberDown("#numberDownBed", "#numberBedRooms");
-  numberUp("#numberUpBed", "#numberBedRooms");
+	numberUp("#numberUpBed", "#numberBedRooms");
 });
 
 // JS to +/- number of Bathrooms
@@ -46,3 +49,37 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
     initAutocomplete();
 });
+
+initStarRating();
+
+// Navbar Side Menu Behaviour
+document.addEventListener('turbolinks:load', () => {
+	const sidebarBox = document.querySelector('.side__menu'),
+			sidebarBtn = document.querySelector('.burger__btn'),
+			pageWrapper = document.querySelector('#page-wrapper');
+
+	sidebarBtn.addEventListener('click', event => {
+			sidebarBtn.classList.toggle('active');
+			sidebarBox.classList.toggle('active');
+			pageWrapper.style.display = 'block';
+	});
+
+	pageWrapper.addEventListener('click', event => {
+
+			if (sidebarBox.classList.contains('active')) {
+					sidebarBtn.classList.remove('active');
+					sidebarBox.classList.remove('active');
+					pageWrapper.style.display = 'none';
+			}
+	});
+
+	window.addEventListener('keydown', event => {
+
+			if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+					sidebarBtn.classList.remove('active');
+					sidebarBox.classList.remove('active');
+					pageWrapper.style.display = 'none';
+			}
+	});
+});
+
