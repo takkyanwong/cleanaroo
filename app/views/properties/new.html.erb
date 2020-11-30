@@ -7,7 +7,7 @@
     <h3 class="mb-2">Your property</h3>
     <%= f.input_field :property_type, as: :radio_buttons, collection: ['Apartment', 'House'],
                 class: "property-form", item_wrapper_class: 'tag-item',
-                collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper' %>
+                collection_wrapper_tag: 'div', collection_wrapper_class: 'property-type-wrapper' %>
 
     <div class="inline-input mt-5 mb-4">
       <%= f.input :size, label: "Total m2", html5: true %>

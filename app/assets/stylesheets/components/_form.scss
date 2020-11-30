@@ -1,9 +1,17 @@
 // Property type
-.category-wrapper {
+%form-wrapper {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 12px;
+}
+
+.category-wrapper {
+  @extend %form-wrapper;
+  flex-wrap: wrap;
+}
+
+.property-type-wrapper{
+  @extend %form-wrapper;
 }
 
 .tag-item {
