@@ -43,6 +43,10 @@
   @extend %btn;
   color: $green;
 
+  &:hover {
+    color: inherit;
+  }
+
   img {
     color: $green;
   }
