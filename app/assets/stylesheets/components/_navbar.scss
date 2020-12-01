@@ -1,8 +1,10 @@
-$easing: cubic-bezier(.6, .05, .28, .91);
+$easing: cubic-bezier(0.6, 0.05, 0.28, 0.91);
 
-$viewport_size: (s: 320px,
+$viewport_size: (
+  s: 320px,
   m: 768px,
-  l: 1200px);
+  l: 1200px,
+);
 
 /* navbar */
 .topnav-cleanaroo {
@@ -12,7 +14,7 @@ $viewport_size: (s: 320px,
   background: white;
   display: flex;
   justify-content: space-between;
-  border-bottom: .5px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
   align-items: center;
 }
 
@@ -33,7 +35,6 @@ $viewport_size: (s: 320px,
   h3 {
     color: $dark-blue;
     margin-left: 10px;
-
   }
 
   img {
@@ -79,7 +80,7 @@ $viewport_size: (s: 320px,
 
 /* burger menu */
 .burger__btn {
-  position: fixed;
+  position: absolute;
   z-index: 5;
   top: 30px;
   right: 15px;
@@ -165,7 +166,6 @@ $viewport_size: (s: 320px,
     text-decoration: none;
     transition: all 250ms;
     color: $dark-blue;
-
   }
 }
 
