@@ -14,9 +14,7 @@ class User < ApplicationRecord
   enum role: %i[owner cleaner]
 
   def property_bookings
-    bookings = properties.map do |property|
-      property.bookings
-    end
+    bookings = properties.map(&:bookings)
     bookings.flatten
   end
 
@@ -25,6 +23,7 @@ class User < ApplicationRecord
     bookings = property_bookings.select do |booking|
       booking.date > DateTime.now()
     end
+    bookings.sort_by(&:date)
   end
 
   def past_bookings
@@ -32,6 +31,7 @@ class User < ApplicationRecord
     bookings = property_bookings.select do |booking|
       booking.date < DateTime.now()
     end
+    bookings.sort_by(&:date).reverse
   end
 
 end
