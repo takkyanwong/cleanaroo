@@ -38,7 +38,7 @@
             </div>
             <div class="card-item">
               <div class="card-icon-container"><i class="fas fa-euro-sign fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.cost %> </h3>
+              <h3 class="ml-3"><%= booking.cost.round %> </h3>
             </div>
             <h4 class="mt-3 mb-1">Service details:</h4>
             <% booking.booking_tasks.each do |t| %>
@@ -72,7 +72,7 @@
             </div>
             <div class="card-item">
               <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.cost %> </h3>
+              <h3 class="ml-3"><%= booking.cost.round %> </h3>
             </div>
             <h4 class="mt-3 mb-1">Service details:</h4>
             <% booking.booking_tasks.each do |t| %>
