@@ -11,11 +11,10 @@ class PagesController < ApplicationController
 
   def match
     @booking = Booking.find(params[:booking_id])
+    @booking.property.update(user: current_user)
   end
 
   def success
     @booking = Booking.find(params[:booking_id])
   end
 end
-
-
