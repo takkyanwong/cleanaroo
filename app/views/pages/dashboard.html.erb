@@ -80,8 +80,17 @@
             <% end %>
 
             <%= link_to "Clean again", "#", class:"btn-dark mt-4"%>
-            <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
 
+            <% if booking.reviews == nil %>
+              <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
+            <% else %>
+              <% booking.review.rating.times do |i| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - booking.review.rating).times do |i| %>
+                <i class="far fa-star"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>
