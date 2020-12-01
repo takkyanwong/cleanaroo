@@ -10,9 +10,11 @@
   font-style: normal;
   display: block;
   padding: 14px 24px;
+
   &:hover {
     text-decoration: none;
   }
+
   &:active {
     text-decoration: none;
     color: inherit;
@@ -31,9 +33,20 @@
   background-color: $bright-green;
   color: $dark-blue;
   border: 1px solid #27c6c7;
+
   &:hover {
     color: inherit;
   }
+}
+
+.btn-transparent {
+  @extend %btn;
+  color: $green;
+
+  img {
+    color: $green;
+  }
+
 }
 
 .btn-container {
