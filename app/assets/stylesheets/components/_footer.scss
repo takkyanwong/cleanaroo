@@ -11,6 +11,24 @@
   }
 }
 
+.footer-dashboard {
+  background-color: white;
+  text-align: center;
+  border-top: 1px solid $dark-blue;
+  padding-top: 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  & a {
+    color: $dark-blue;
+    &:hover {
+      color: $light-gray;
+      text-decoration: none;
+    }
+  }
+}
+
+
 .icons a i {
   font-size: 24px;
   padding-right: 40px;

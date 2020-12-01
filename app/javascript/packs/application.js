@@ -50,7 +50,10 @@ document.addEventListener('turbolinks:load', () => {
     initAutocomplete();
 });
 
-initStarRating();
+// Star rating
+document.addEventListener('turbolinks:load', () => {
+  initStarRating();
+});
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
