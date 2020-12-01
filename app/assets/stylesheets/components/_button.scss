@@ -44,13 +44,12 @@
   color: $green;
 
   &:hover {
-    color: inherit;
+    color: transparentize($green, .5);
   }
 
-  img {
-    color: $green;
+  &:active {
+    color: transparentize($green, .5);
   }
-
 }
 
 .btn-container {
