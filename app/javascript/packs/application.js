@@ -61,15 +61,18 @@ document.addEventListener('turbolinks:load', () => {
 	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
 			sidebarBox.classList.toggle('active');
-			pageWrapper.style.display = 'block';
+			if (sidebarBox.classList.contains('active')) {
+				pageWrapper.style.display = 'block';
+			} else {
+				pageWrapper.style.display = 'none';
+			}
 	});
 
 	pageWrapper.addEventListener('click', event => {
-
 			if (sidebarBox.classList.contains('active')) {
 					sidebarBtn.classList.remove('active');
 					sidebarBox.classList.remove('active');
-					pageWrapper.style.display = 'none';
+					event.target.style.display = 'none';
 			}
 	});
 
