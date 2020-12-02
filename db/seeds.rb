@@ -69,7 +69,7 @@ cleaners = []
   end
 
   # Seeding properties
-  10.times {
+  50.times {
     property = Property.create!(
   address: addresses.sample,
   size: rand(1..5),
@@ -83,12 +83,12 @@ cleaners = []
 }
 
 # Seeding bookings
-10.times {
+50.times {
   booking = Booking.create!(
-    cost: rand(99..499),
+    cost: rand(99..299),
     property: Property.all.sample,
     user: cleaners.sample,
-    date: rand(1.month.ago..10.weeks.from_now).to_datetime,
+    date: rand(3.month.ago..2.weeks.from_now).to_datetime,
     comment: "be good with my place"
   )
   puts "#{booking.date} #{booking.user.name}"
@@ -97,7 +97,7 @@ cleaners = []
 # Seeding review
 10.times {
   review = Review.create!(
-    rating: rand(1..5),
+    rating: rand(4..5),
     description: descriptions.sample,
     title: titles.sample,
     booking: Booking.all.sample
@@ -109,7 +109,7 @@ cleaners = []
 tasks.each do |task|
   task = Task.create!(
     title: task,
-    price: rand(19..199)
+    price: rand(5..39)
   )
 
   puts "#{task.title} #{task.price}"
