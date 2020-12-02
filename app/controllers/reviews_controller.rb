@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking = @booking
     if @review.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path(review: 1) # this will add in URL /dashboard?review=1 > use for JS to use the anchor to past bookings
     else
       render :new
     end
