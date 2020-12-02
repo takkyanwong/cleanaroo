@@ -4,6 +4,9 @@ flatpickr(".datepicker", {
   disableMobile: "true",
   inline: "true",
   enableTime: "true",
-  minTime: "08:00",
-  maxTime: "19:00"
+  minTime: "8:00",
+  maxTime: "19:00",
+  minDate: "today",
+  defaultDate: Date.now()
 });
+
