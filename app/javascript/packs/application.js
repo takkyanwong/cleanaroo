@@ -54,6 +54,9 @@ document.addEventListener('turbolinks:load', () => {
 // Star rating
 document.addEventListener('turbolinks:load', () => {
   initStarRating();
+  if (window.location.href.indexOf('review') > 0) {
+    $('#pills-profile-tab').tab('show');
+  }
 });
 
 // Navbar Side Menu Behaviour
@@ -89,4 +92,6 @@ document.addEventListener('turbolinks:load', () => {
 			}
 	});
 });
+
+
 
