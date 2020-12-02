@@ -137,19 +137,26 @@
 // Review
 
 .new-form #review_title {
-  height: 50px;
+  height: 32px;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.5px;
+  text-transform: none;
 }
 
-.new-form #review_description {
-  height: 150px;
-}
-
-.new-form .text, .new-form .select {
+.new-form .text.optional {
   font-size: 12px !important;
   font-weight: 800 !important;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin: 20px 0 0 0;
+}
+
+.new-form #review_description {
+  height: 150px;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.5px;
+  text-transform: none;
 }
 
 .new-form .br-wrapper {
