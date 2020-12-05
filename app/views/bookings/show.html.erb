@@ -22,7 +22,7 @@
         <h3 class="ml-3"><%= @booking.cost.round %> </h3>
       </div>
 
-      <%= link_to "Check in", "#", class: "btn-dark mt-4" %>
+      <%= link_to "Check in", checkin_booking_booking_logs_path(@booking), method: :post, class: "btn-dark mt-4" %>
 
       <div class="card-item card-button mt-2">
         <%= link_to "#", class:"btn-green mr-1" do %>
