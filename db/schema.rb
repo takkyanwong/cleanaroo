@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_205207) do
+ActiveRecord::Schema.define(version: 2020_12_05_140052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,23 @@ ActiveRecord::Schema.define(version: 2020_11_24_205207) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "checkout_session_id"
+    t.string "state"
     t.index ["property_id"], name: "index_bookings_on_property_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "booking_sku"
+    t.string "cost"
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_orders_on_booking_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -84,6 +99,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_205207) do
   add_foreign_key "booking_tasks", "tasks"
   add_foreign_key "bookings", "properties"
   add_foreign_key "bookings", "users"
+  add_foreign_key "orders", "bookings"
+  add_foreign_key "orders", "users"
   add_foreign_key "properties", "users"
   add_foreign_key "reviews", "bookings"
 end

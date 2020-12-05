@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :properties
   has_many :bookings
   has_many :reviews, through: :bookings
+  has_many :orders
 
   validates :name, presence: true
   validates :phone_number, presence: true
