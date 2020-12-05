@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :bookings, only: [] do
     resources :booking_tasks, only: [:new, :create]
     resources :reviews, only: [:new, :create]
+    resources :booking_logs, only: [] do
+      post "/checkin", to: 'booking_logs#checkin'
+      patch "/checkout", to: 'booking_logs#checkout'
+    end
     get "/match", to: 'pages#match'
     get "/success", to: 'pages#success'
   end
