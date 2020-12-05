@@ -1,4 +1,5 @@
 class Property < ApplicationRecord
+  geocoded_by :address
   belongs_to :user, optional: true
 
   has_many :bookings
@@ -7,4 +8,6 @@ class Property < ApplicationRecord
   validates :bedroom_count, presence: true, inclusion: { in: (0..2000) }
   validates :bathroom_count, presence: true, inclusion: { in: (0..2000) }
   validates :property_type, presence: true
+
+  after_validation :geocode, if: :will_save_change_to_address?
 end

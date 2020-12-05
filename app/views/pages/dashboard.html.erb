@@ -94,7 +94,7 @@
                 <i class="far fa-star"></i>
               <% end %>
             <% end %>
-            <%= link_to "Clean again", "#", class:"btn-dark mt-4"%>
+            <%= link_to "Clean again", new_property_booking_path(booking.property), data: {turbolinks: false}, class:"btn-dark mt-4"%>
 
             <% if booking.review == nil %>
               <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
