@@ -1,140 +1,187 @@
 <!--HEADLINE -->
-<div class="container">
-  <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
-  <h4>Manage your cleanings and properties below:</h4>
-</div>
+<% if current_user.role == 0 %>
 
-<!--NAVIGATION -->
-<div class="container mt-3">
-  <ul class="nav nav-pills" id="pills-tab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Upcoming</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Past</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Your properties</a>
-    </li>
-  </ul>
 
-  <!--UPCOMING BOOKINGS -->
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      <% @upcoming_bookings.each do |booking| %>
-        <div class="card card-dashboard">
-          <div class="card-body">
-            <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.property.address %></h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-euro-sign fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.cost.round %> </h3>
-            </div>
-            <h4 class="mt-3 mb-1">Service details:</h4>
-            <% booking.booking_tasks.each do |t| %>
-               <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
-            <% end %>
-            <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
-              <i class="far fa-edit"></i> CHANGE
+
+  <div class="container">
+
+    <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
+    <h4>Manage your cleanings and properties below:</h4>
+  </div>
+
+  <!--NAVIGATION -->
+  <div class="container mt-3">
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Upcoming</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Past</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Your properties</a>
+      </li>
+    </ul>
+
+    <!--UPCOMING BOOKINGS -->
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <% @upcoming_bookings.each do |booking| %>
+          <div class="card card-dashboard">
+            <div class="card-body">
+              <div class="card-item">
+                <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.property.address %></h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="fas fa-euro-sign fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.cost.round %> </h3>
+              </div>
+              <h4 class="mt-3 mb-1">Service details:</h4>
+              <% booking.booking_tasks.each do |t| %>
+                 <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
               <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
-              <i class="fas fa-times"></i> CANCEL
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-  <!--PAST BOOKINGS -->
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <% @past_bookings.each do |booking| %>
-        <div class="card card-dashboard">
-          <div class="card-body">
-            <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.property.address %></h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
-              <h3 class="ml-3"><%= booking.cost.round %> </h3>
-            </div>
-
-
-            <h4 class="mt-3 mb-1">Service details:</h4>
-            <% booking.booking_tasks.each do |t| %>
-               <h4 class="mb-1"> <i class="fas fa-check grey"></i> <%= t.task.title %></h4>
-            <% end %>
-
-            <% if booking.review %>
-              <h4 class="mt-3 mb-1"> Your rating:</h4>
-              <% booking.review.rating.times do |i| %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - booking.review.rating).times do |i| %>
-                <i class="far fa-star"></i>
-              <% end %>
-            <% end %>
-            <%= link_to "Clean again", new_property_booking_path(booking.property), data: {turbolinks: false}, class:"btn-dark mt-4"%>
-
-            <% if booking.review == nil %>
-              <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-  <!--YOUR PROPERTIES -->
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-      <% current_user.properties.each do |property| %>
-        <div class="card card-dashboard">
-          <div class="card-body">
-            <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-home fa-fw"></i></div>
-              <h3 class="ml-3"><%= property.property_type %> </h3>
-            </div>
-            <div class="card-item">
-              <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
-              <h3 class="ml-3"><%= property.address %> </h3>
-            </div>
-            <h4 class="mt-3 mb-1">Details:</h4>
-            <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= property.size %> sqm</h4>
-            <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bedroom_count, 'Bedroom') %> </h4>
-            <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bathroom_count, 'Bathroom') %></h4>
-            <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
+              <div class="card-item card-button mt-4">
+                <%= link_to "#", class:"btn-transparent" do %>
                 <i class="far fa-edit"></i> CHANGE
-              <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
+                <% end %>
+                <%= link_to "#", class:"btn-transparent" do %>
                 <i class="fas fa-times"></i> CANCEL
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <!--PAST BOOKINGS -->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <% @past_bookings.each do |booking| %>
+          <div class="card card-dashboard">
+            <div class="card-body">
+              <div class="card-item">
+                <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.property.address %></h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
+                <h3 class="ml-3"><%= booking.cost.round %> </h3>
+              </div>
+
+
+              <h4 class="mt-3 mb-1">Service details:</h4>
+              <% booking.booking_tasks.each do |t| %>
+                 <h4 class="mb-1"> <i class="fas fa-check grey"></i> <%= t.task.title %></h4>
+              <% end %>
+
+              <% if booking.review %>
+                <h4 class="mt-3 mb-1"> Your rating:</h4>
+                <% booking.review.rating.times do |i| %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - booking.review.rating).times do |i| %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <% end %>
+              <%= link_to "Clean again", new_property_booking_path(booking.property), data: {turbolinks: false}, class:"btn-dark mt-4"%>
+
+              <% if booking.review == nil %>
+                <%= link_to "Leave a review", new_booking_review_path(booking), class:"btn-green mt-2"%>
               <% end %>
             </div>
-            <%= link_to "Request again", new_property_booking_path(property), data: {turbolinks: false}, class: "btn-dark mt-2" %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+    <!--YOUR PROPERTIES -->
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <% current_user.properties.each do |property| %>
+          <div class="card card-dashboard">
+            <div class="card-body">
+              <div class="card-item">
+                <div class="card-icon-container"><i class="fas fa-home fa-fw"></i></div>
+                <h3 class="ml-3"><%= property.property_type %> </h3>
+              </div>
+              <div class="card-item">
+                <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
+                <h3 class="ml-3"><%= property.address %> </h3>
+              </div>
+              <h4 class="mt-3 mb-1">Details:</h4>
+              <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= property.size %> sqm</h4>
+              <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bedroom_count, 'Bedroom') %> </h4>
+              <h4 class="mb-1"><i class="fas fa-check grey"></i> <%= pluralize(property.bathroom_count, 'Bathroom') %></h4>
+              <div class="card-item card-button mt-4">
+                <%= link_to "#", class:"btn-transparent" do %>
+                  <i class="far fa-edit"></i> CHANGE
+                <% end %>
+                <%= link_to "#", class:"btn-transparent" do %>
+                  <i class="fas fa-times"></i> CANCEL
+                <% end %>
+              </div>
+              <%= link_to "Request again", new_property_booking_path(property), data: {turbolinks: false}, class: "btn-dark mt-2" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<%= render 'shared/dashboard_footer_properties' %>
+  <%= render 'shared/dashboard_footer_properties' %>
+
+<% else %>
+
+  <div class="container d-flex">
+    <%= image_tag "clenaroo-avatar.jpg", class: "avatar-bordered mr-4" %>
+    <div>
+      <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
+      <h5> <i class="far fa-star" id="green-star"></i> <%= current_user.average_rating %> </h5>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% end %>

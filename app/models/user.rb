@@ -34,5 +34,10 @@ class User < ApplicationRecord
     bookings.sort_by(&:date).reverse
   end
 
+  def average_rating
+    ratings = reviews.pluck(:rating)
+    ratings.sum/ratings.length.to_f
+  end
+
 end
 
