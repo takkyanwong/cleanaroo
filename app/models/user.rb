@@ -53,9 +53,9 @@ class User < ApplicationRecord
 
   def past_cleanings
     past_b = bookings.select do |booking|
-      booking.date > DateTime.now()
+      booking.date < DateTime.now()
     end
-    past_b.sort_by(&:date)
+    past_b.sort_by(&:date).reverse
   end
 
   def current_week_bookings
