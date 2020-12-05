@@ -20,26 +20,20 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "Book Now", booking_success_path, class:"btn-dark mt-4"%>
+  <%# <%= link_to "Book Now", class:"btn-dark mt-4"%> 
 
-        <button id="pay" class="btn btn-primary">Pay</button>
+  <button id="pay" class="btn-dark mt-4">Book Now</button>
 
-      <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        const paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @booking.checkout_session_id %>'
-          });
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const paymentButton = document.getElementById('pay');
+      paymentButton.addEventListener('click', () => {
+        const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+        stripe.redirectToCheckout({
+          sessionId: '<%= @booking.checkout_session_id %>'
         });
-      </script>
-  
-  <%# STRIPE BOOKING BUTTON %>
-  <%= form_tag booking_payment_path(@booking) do %>
-    <%= hidden_field_tag 'booking_id', @booking.id %>
-    <%= submit_tag "Book Now Stripe", class: "btn-dark mt-4" %>
-  <% end %>
+      });
+    </script>
 </div>
 
 <%= render 'shared/footer' %>
