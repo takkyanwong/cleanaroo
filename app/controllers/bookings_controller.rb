@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.state = 'pending'
     @user = User.where(role: 1).sample # TODO: assign cleaner based on availability and location
     @booking.user = @user
     @property = Property.find(params[:property_id])
@@ -21,6 +22,16 @@ class BookingsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @booking = Booking.find(params[:id])
+    # /bookings/:id(.:format)
+    @markers = [{
+      lat: @booking.property.latitude,
+      lng: @booking.property.longitude
+    }]
+  end
+
 
   private
 
