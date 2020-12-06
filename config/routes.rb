@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
   get "/dashboard", to: 'pages#dashboard'
 
-  resources :bookings, only: [] do
-    resources :payments, only: :new
     
+  resources :bookings, only: [:show] do
+    resources :payments, only: :new
     resources :booking_tasks, only: [:new, :create]
     resources :reviews, only: [:new, :create]
     get "/match", to: 'pages#match'
@@ -19,4 +19,3 @@ Rails.application.routes.draw do
     post "/payment", to: 'pages#payment'
   end
 end
-
