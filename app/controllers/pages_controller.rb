@@ -12,6 +12,29 @@ class PagesController < ApplicationController
   def match
     @booking = Booking.find(params[:booking_id])
     @booking.property.update(user: current_user)
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        amount: (@booking.cost*100).to_i,
+        name: "cleaning",
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: booking_success_url(@booking), 
+      cancel_url: booking_match_url(@booking)
+    )
+    @booking.update(checkout_session_id: session.id)
+  end
+  
+  def payment
+    @booking = Booking.find(params[:booking_id])
+  
+    redirect_to new_booking_payment_path(@booking)
+  end
+
+  #show page to be displayed once paid
+  def show
+    @booking = current_user.booking.find(params[:booking_id])
   end
 
   def success

@@ -89,7 +89,8 @@ cleaners = []
     property: Property.all.sample,
     user: cleaners.sample,
     date: rand(3.month.ago..2.weeks.from_now).to_datetime,
-    comment: "be good with my place"
+    comment: "be good with my place", 
+    status: "paid"
   )
   puts "#{booking.date} #{booking.user.name}"
 }

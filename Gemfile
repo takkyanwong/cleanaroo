@@ -30,6 +30,8 @@ gem 'geocoder'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'stripe'
+gem 'stripe_event'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
