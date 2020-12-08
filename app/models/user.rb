@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   has_many :orders
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :phone_number, presence: true
@@ -85,5 +86,6 @@ class User < ApplicationRecord
     total = current_year_bookings.pluck(:cost)
     total.sum.round
   end
+
 end
 
