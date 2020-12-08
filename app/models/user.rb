@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   has_many :orders
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :phone_number, presence: true
@@ -37,7 +38,7 @@ class User < ApplicationRecord
 
   def average_rating
     ratings = reviews.pluck(:rating)
-    ratings.sum/ratings.length.to_f
+    (ratings.sum / ratings.length.to_f).round(1)
   end
 
   def total_earned
@@ -85,5 +86,6 @@ class User < ApplicationRecord
     total = current_year_bookings.pluck(:cost)
     total.sum.round
   end
+
 end
 
