@@ -6,7 +6,7 @@
   <h2 class="text-center mt-5 mb-4">You have successfully booked your cleaner</h2>
   <div class="card-success">
     <div class="cleaner__info">
-      <%= cl_image_tag booking.user.photo.attached? ? booking.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered" %>
+      <%= cl_image_tag @booking.user.photo.attached? ? @booking.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered" %>
       <h4 class="mt-2"><strong><%= @booking.user.name.upcase %></strong></h4>
     </div>
     <div class="card-body">

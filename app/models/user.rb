@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def average_rating
     ratings = reviews.pluck(:rating)
-    ratings.sum/ratings.length.to_f
+    (ratings.sum / ratings.length.to_f).round(1)
   end
 
   def total_earned

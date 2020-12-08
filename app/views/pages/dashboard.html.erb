@@ -151,7 +151,7 @@
 <% else current_user.role == 1 %>
 
   <div class="container d-flex">
-    <%= image_tag "clenaroo-avatar.jpg", class: "avatar-bordered mr-4" %>
+    <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-4" %>
     <div>
       <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
       <h5> <i class="far fa-star" id="green-star"></i> <%= current_user.average_rating %> </h5>
