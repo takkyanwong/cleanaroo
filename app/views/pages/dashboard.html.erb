@@ -262,7 +262,7 @@
         </div>
 
 
-      <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"] %>
+      <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€" %>
 
 
       </div>
