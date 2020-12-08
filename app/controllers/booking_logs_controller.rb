@@ -14,6 +14,8 @@ class BookingLogsController < ApplicationController
       from: 'whatsapp:+14155238886',
       to: 'whatsapp:+34634517948'
     )
+
+    redirect_to booking_path(@booking)
   end
 
   def checkout
@@ -27,6 +29,7 @@ class BookingLogsController < ApplicationController
       from: 'whatsapp:+14155238886',
       to: 'whatsapp:+34634517948'
     )
+    # redirect_to booking_path(@booking)
   end
 
   private

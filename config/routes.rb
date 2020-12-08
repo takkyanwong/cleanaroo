@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :booking_logs, only: [] do
       collection do
         post "/checkin", to: 'booking_logs#checkin'
-        patch "/checkout", to: 'booking_logs#checkout'
+        put "/checkout", to: 'booking_logs#checkout'
       end
     end
     get "/match", to: 'pages#match'

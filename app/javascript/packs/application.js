@@ -33,6 +33,7 @@ import "../plugins/flatpickr";
 import { numberDown, numberUp } from '../components/button';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initStarRating } from '../plugins/init_star_rating';
+import { initSweetalert } from "../plugins/init_sweetalert";
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
@@ -100,4 +101,20 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
-
+// Alert checkout
+document.addEventListener("turbolinks:load", function() {
+	initSweetalert('#alert-checkout', {
+		title: "Are you done?",
+		text: "We will notify the property manager that you are done cleaning!",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+		closeOnClickOutside: false,
+	}, (value) => {
+		if (value) {
+			const link = document.querySelector('#alert-checkout');
+			link.click();
+			document.location.reload();
+		}
+	});
+});

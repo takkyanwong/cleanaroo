@@ -2,7 +2,7 @@
 <div class="container">
   <h2 class="mb-2">Ready for your clean <%= "#{current_user.name}" %>?</h2>
 
-<!--Card -->
+  <!--Card -->
   <div class="card card-dashboard">
     <div class="card-body">
       <div class="card-item">
@@ -22,20 +22,24 @@
         <h3 class="ml-3"><%= @booking.cost.round %> </h3>
       </div>
 
-      <%= link_to "Check in", checkin_booking_booking_logs_path(@booking), method: :post, class: "btn-dark mt-4" %>
+      <% if @booking.booking_log.nil? %>
+        <%= link_to "Check in", checkin_booking_booking_logs_path(@booking, source: "show"), method: :post, remote: true, class: "btn-dark mt-4" %>
+      <% elsif @booking.booking_log.checkin_date_time.present? && @booking.booking_log.checkout_date_time.nil? %>
+        <%= link_to "Check out", checkout_booking_booking_logs_path(@booking, source: "show"), method: :put, remote: true, id: "alert-checkout", class: "btn-dark mt-4" %>
+      <% end %>
 
       <div class="card-item card-button mt-2">
         <%= link_to "#", class:"btn-green mr-1" do %>
-        <i class="far fa-comments"></i> CHAT
+          <i class="far fa-comments"></i> CHAT
         <% end %>
         <%= link_to "#", class:"btn-green ml-1" do %>
-        <i class="fas fa-times"></i> CANCEL
+          <i class="fas fa-times"></i> CANCEL
         <% end %>
       </div>
     </div>
   </div>
 
-<!--DETAILS -->
+  <!--DETAILS -->
   <h3>Service details:</h3>
 
   <% @booking.booking_tasks.each do |t| %>
@@ -45,9 +49,9 @@
   <h3>Comments:</h3>
   <h4> <%= @booking.comment %> </h4>
 
-<!--MAP -->
-<div id="map"
-     style="width: 100%; height: 200px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <!--MAP -->
+  <div id="map"
+       style="width: 100%; height: 200px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
