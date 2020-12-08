@@ -95,5 +95,11 @@ document.addEventListener('turbolinks:load', () => {
 	});
 });
 
+// MAP
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
 
 
