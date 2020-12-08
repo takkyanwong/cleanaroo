@@ -1,4 +1,5 @@
 <!--HEADLINE -->
+
 <% if current_user.role == "owner" %>
 
 
@@ -175,9 +176,6 @@
     </ul>
 
 
-    <%= column_chart Booking.group_by_day_of_week(:date, format: "%a").count %>
-
-
     <!--WALLET -->
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -263,6 +261,8 @@
 
         </div>
 
+
+      <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"] %>
 
 
       </div>
