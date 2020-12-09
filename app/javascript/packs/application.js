@@ -101,22 +101,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
-// Alert checkout
-document.addEventListener("turbolinks:load", function() {
-	initSweetalert('#alert-checkout', {
-		title: "Have you finished cleaning?",
-		text: "Once you click ok, we will notify the property manager.",
-		icon: "warning",
-		buttons: [ true, "I'm done!"],
-		closeOnClickOutside: false,
-	}, (value) => {
-		if (value) {
-			const link = document.querySelector('#update-checkout');
-			link.click();
-		}
-	});
-});
-
 // JS alert checkin
 document.addEventListener("turbolinks:load", function() {
 	initSweetalert('#alert-checkin', {
@@ -133,3 +117,18 @@ document.addEventListener("turbolinks:load", function() {
 	});
 });
 
+// Alert checkout
+document.addEventListener("turbolinks:load", function() {
+	initSweetalert('#alert-checkout', {
+		title: "Have you finished cleaning?",
+		text: "Once you click ok, we will notify the property manager.",
+		icon: "warning",
+		buttons: [ true, "I'm done!"],
+		closeOnClickOutside: false,
+	}, (value) => {
+		if (value) {
+			const link = document.querySelector('#update-checkout');
+			link.click();
+		}
+	});
+});
