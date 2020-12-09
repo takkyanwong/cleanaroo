@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'twilio-ruby'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

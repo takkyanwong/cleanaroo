@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     resources :payments, only: :new
     resources :booking_tasks, only: [:new, :create]
     resources :reviews, only: [:new, :create]
+    resources :booking_logs, only: [] do
+      collection do
+        post "/checkin", to: 'booking_logs#checkin'
+        put "/checkout", to: 'booking_logs#checkout'
+      end
+    end
     get "/match", to: 'pages#match'
     get "/success", to: 'pages#success'
     post "/payment", to: 'pages#payment'

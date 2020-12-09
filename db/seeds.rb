@@ -9,6 +9,7 @@
 puts "Cleaning Database"
 
 Review.destroy_all
+BookingLog.destroy_all
 Booking.destroy_all
 Property.destroy_all
 Task.destroy_all
