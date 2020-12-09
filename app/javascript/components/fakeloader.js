@@ -1,5 +1,8 @@
 const fakeLoader = () => {
-  document.querySelector('.wrapper-faker').style.display = "none";
+  if ( document.querySelector('.wrapper-faker') ) 
+  {
+    document.querySelector('.wrapper-faker').style.display = "none";
+  }
 };
 
 export { fakeLoader };
