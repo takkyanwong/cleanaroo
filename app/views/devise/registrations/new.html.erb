@@ -20,6 +20,10 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :role,
+                  label: "I am a...",
+                  as: :radio_buttons,
+                  collection: User.roles.keys%>
       <%= f.input :photo, as: :file %>
     </div>
 
