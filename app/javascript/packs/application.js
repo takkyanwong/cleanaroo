@@ -61,9 +61,9 @@ document.addEventListener('turbolinks:load', () => {
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
-	const sidebarBox = document.querySelector('.side__menu'),
-			sidebarBtn = document.querySelector('.burger__btn'),
-			pageWrapper = document.querySelector('#page-wrapper');
+	const sidebarBox = document.querySelector('.side__menu')
+	const	sidebarBtn = document.querySelector('.burger__btn')
+	const pageWrapper = document.querySelector('#page-wrapper');
 
 	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
@@ -100,4 +100,14 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
+document.addEventListener('turbolinks:load', () => {
+	const phoneInput = document.getElementById('user_phone_number');
+	const emailInput = document.getElementById('user_email');
+	const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+	phoneInput.addEventListener('input', event => {
+	console.log(phoneRegex.test(event.target.value));
+	if (phoneRegex.test{})
 
+	})
+	});
+})
