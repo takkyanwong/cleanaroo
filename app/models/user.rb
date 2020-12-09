@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :phone_number, presence: true
   validates :role, presence: true
-  enum role: %i[owner cleaner]
+  enum role: %i[owner cleaner] #0 & 1
 
   def property_bookings
     bookings = properties.map(&:bookings) # iterating over properties doing property.bookings
