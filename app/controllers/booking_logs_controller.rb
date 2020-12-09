@@ -15,7 +15,9 @@ class BookingLogsController < ApplicationController
       to: 'whatsapp:+34634517948'
     )
 
-    redirect_to booking_path(@booking)
+    redirect_to booking_path(@booking) if params[:source] == "show"
+    redirect_to dashboard_path if params[:source] == "dashboard"
+
   end
 
   def checkout
@@ -29,7 +31,10 @@ class BookingLogsController < ApplicationController
       from: 'whatsapp:+14155238886',
       to: 'whatsapp:+34634517948'
     )
-    redirect_to booking_path(@booking)
+
+    redirect_to booking_path(@booking) if params[:source] == "show"
+    redirect_to dashboard_path if params[:source] == "dashboard"
+
   end
 
   private
