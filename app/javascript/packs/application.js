@@ -104,17 +104,32 @@ document.addEventListener('turbolinks:load', () => {
 // Alert checkout
 document.addEventListener("turbolinks:load", function() {
 	initSweetalert('#alert-checkout', {
-		title: "Are you done?",
-		text: "We will notify the property manager that you are done cleaning!",
+		title: "Have you finished cleaning?",
+		text: "Once you click ok, we will notify the property manager.",
 		icon: "warning",
-		buttons: true,
-		dangerMode: true,
+		buttons: [ true, "I'm done!"],
 		closeOnClickOutside: false,
 	}, (value) => {
 		if (value) {
-			const link = document.querySelector('#alert-checkout');
+			const link = document.querySelector('#update-checkout');
 			link.click();
-			document.location.reload();
 		}
 	});
 });
+
+// JS alert checkin
+document.addEventListener("turbolinks:load", function() {
+	initSweetalert('#alert-checkin', {
+		title: "Are you ready to start cleaning?",
+		text: "We will inform the property manager that you arrived at the property.",
+		icon: "success",
+		buttons: [ true, "I'm ready!"],
+		closeOnClickOutside: false,
+	}, (value) => {
+		if (value) {
+			const link = document.querySelector('#update-checkin');
+			link.click();
+		}
+	});
+});
+
