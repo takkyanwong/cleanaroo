@@ -152,7 +152,7 @@
 <% else current_user.role == 1 %>
 
   <div class="container d-flex">
-    <%= image_tag "clenaroo-avatar.jpg", class: "avatar-bordered mr-4" %>
+    <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-4" %>
     <div>
       <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
       <h5> <i class="far fa-star" id="green-star"></i> <%= current_user.average_rating %> </h5>
@@ -303,8 +303,14 @@
                 <h3 class="ml-3"><%= booking.cost.round %> </h3>
               </div>
               <div class="card-item card-button mt-4">
-                <%= link_to "Check in", "#",  class:"btn-dark mt-2 mr-2"%>
-                <%= link_to "More info", "#", class:"btn-green mt-2"%>
+                <% if booking.booking_log.nil? %>
+                  <button class="btn-dark mt-2 mr-2" id="alert-checkin">Check in</button>
+                  <%= link_to "", checkin_booking_booking_logs_path(booking, source: "dashboard"), method: :post, remote: true, id: "update-checkin", class: "hidden" %>
+                <% elsif booking.booking_log.checkin_date_time.present? && booking.booking_log.checkout_date_time.nil? %>
+                  <button class="btn-dark mt-2 mr-2" id="alert-checkout">Check out</button>
+                  <%= link_to "", checkout_booking_booking_logs_path(booking, source: "dashboard"), method: :put, remote: true, id: "update-checkout", class: "hidden" %>
+                <% end %>
+                <%= link_to "More info", booking_path(booking), class:"btn-green mt-2"%>
               </div>
             </div>
           </div>

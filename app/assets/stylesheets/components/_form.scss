@@ -162,3 +162,22 @@
 .new-form .br-wrapper {
   margin: 0 0 50px 0;
 }
+
+.radio_buttons .form-check {
+  line-height: 40px;
+  position: relative;
+  display: flex;
+  padding-left: 1.25rem;
+  align-items: center;
+}
+
+.form-check-input.is-valid ~ .form-check-label {
+  color: black;
+  margin-left: 20px;
+}
+
+
+input[type="radio"], input[type="checkbox"] {
+  transform: scale(1.7);
+  filter: hue-rotate(-0.15turn) opacity(0.75);
+}

@@ -28,6 +28,10 @@ gem 'geocoder'
 gem "chartkick"
 gem 'groupdate'
 
+#Cloudinary set-up
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'cloudinary', '~> 1.16.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -38,6 +42,7 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'twilio-ruby'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
