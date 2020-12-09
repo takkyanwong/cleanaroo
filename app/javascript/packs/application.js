@@ -34,6 +34,7 @@ import "../plugins/flatpickr";
 import { numberDown, numberUp } from '../components/button';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initStarRating } from '../plugins/init_star_rating';
+import { fakeLoader } from '../components/fakeloader';
 import { initSweetalert } from "../plugins/init_sweetalert";
 
 // JS to +/- number of Bedrooms
@@ -50,7 +51,8 @@ document.addEventListener('turbolinks:load', () => {
 
 // JS to autocomplete the address
 document.addEventListener('turbolinks:load', () => {
-    initAutocomplete();
+		initAutocomplete();
+		setTimeout(fakeLoader, 2000);
 });
 
 // Star rating
