@@ -12,7 +12,7 @@
 <div class="container">
   <h2 class="text-center mt-5 mb-4">We found your cleaner!</h2>
   <div class="text-center">
-    <%= image_tag "clenaroo-avatar.jpg", class:"avatar-large-match mb-2" %>
+        <%= cl_image_tag @booking.user.photo.attached? ? @booking.user.photo.key : "avatar_lrtyy7", class:"avatar-large-match mb-2" %>
     <br>
     <% @booking.user.reviews.sample(1).each do |review| %>
       <% review.rating.times do |i| %>
@@ -31,6 +31,7 @@
       <% end %>
     </div>
   </div>
+
   <%= link_to "Book Now", "#", class:"btn-dark mt-4", id:"pay"%> 
 
     <script src="https://js.stripe.com/v3/"></script>
