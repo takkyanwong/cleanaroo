@@ -1,3 +1,4 @@
+// dashboard overal
 .nav-pills .nav-link {
   font-size: 16px !important;
   font-weight: 400 !important;
@@ -14,3 +15,30 @@
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
+
+// dashboard cleaner - earnings pills
+
+.nav-fill {
+  border: 0.5px solid $light-gray;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.nav-fill .nav-link {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: $dark-blue !important;
+  background-color: none !important;
+  margin: 0;
+  padding: 0.2rem 0 !important;
+}
+
+.nav-fill .nav-link.active, .nav-pills .show > .nav-link {
+  color: white !important;
+  background-color: $green !important;
+  font-weight: 400 !important;
+  border-radius: 4px;
+  border-bottom: none;
+
+}
+
