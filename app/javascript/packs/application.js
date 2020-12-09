@@ -50,7 +50,7 @@ document.addEventListener('turbolinks:load', () => {
 // JS to autocomplete the address
 document.addEventListener('turbolinks:load', () => {
 		initAutocomplete();
-		setTimeout(fakeLoader, 2000);
+		// setTimeout(fakeLoader, 2000);
 });
 
 // Star rating
