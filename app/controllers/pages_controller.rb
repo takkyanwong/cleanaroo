@@ -7,6 +7,9 @@ class PagesController < ApplicationController
   def dashboard
     @past_bookings = current_user.past_bookings
     @upcoming_bookings = current_user.upcoming_bookings
+    @current_week_pm_bookings = current_user.current_week_pm_bookings
+    @current_month_pm_bookings = current_user.current_month_pm_bookings
+    @current_year_pm_bookings = current_user.current_year_pm_bookings
   end
 
   def match

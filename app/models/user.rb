@@ -36,6 +36,30 @@ class User < ApplicationRecord
     bookings.sort_by(&:date).reverse
   end
 
+  def current_year_pm_bookings
+    upcoming_bookings
+    pm_yearly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_year && booking.date <= DateTime.now.end_of_year
+    end
+    pm_yearly_b.sort_by(&:date)
+  end
+
+  def current_month_pm_bookings
+    upcoming_bookings
+    pm_montly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_month && booking.date <= DateTime.now.end_of_month
+    end
+    pm_montly_b.sort_by(&:date)
+  end
+
+  def current_week_pm_bookings
+    upcoming_bookings
+    pm_weekly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_week && booking.date <= DateTime.now.end_of_week
+    end
+    pm_weekly_b.sort_by(&:date)
+  end
+
   def average_rating
     ratings = reviews.pluck(:rating)
     (ratings.sum / ratings.length.to_f).round(1)
