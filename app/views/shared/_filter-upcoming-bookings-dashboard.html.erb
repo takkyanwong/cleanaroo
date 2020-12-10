@@ -1,28 +1,24 @@
-<div class="earnings mt-5">
-  <h3 class="mt-4 mb-3 font-weight-bold">Filter</h3>
-
-  <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+<!--Dashboard Filter of upcoming bookings-->
+<div class="mt-3">
+  <!--  <h3 class="mt-4 mb-3 font-weight-bold">Filter</h3>-->
+  <ul class="nav nav-pills center-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="pills-week-tab" data-toggle="pill" href="#pills-week" role="tab" aria-controls="pills-home" aria-selected="true">WEEK</a>
+      <a class="nav-link active" id="pills-week-tab" data-toggle="pill" href="#pills-week" role="tab" aria-controls="pills-home" aria-selected="true">Week</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-month-tab" data-toggle="pill" href="#pills-month" role="tab" aria-controls="pills-profile" aria-selected="false">MONTH</a>
+      <a class="nav-link" id="pills-month-tab" data-toggle="pill" href="#pills-month" role="tab" aria-controls="pills-profile" aria-selected="false">Month</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-year-tab" data-toggle="pill" href="#pills-year" role="tab" aria-controls="pills-contact" aria-selected="false">YEAR</a>
+      <a class="nav-link" id="pills-year-tab" data-toggle="pill" href="#pills-year" role="tab" aria-controls="pills-contact" aria-selected="false">Year</a>
     </li>
   </ul>
+
   <div class="tab-content" id="pills-tabContent">
 
     <!-- Property bookings by current WEEK -->
     <div class="tab-pane fade show active" id="pills-week" role="tabpanel" aria-labelledby="pills-week-tab">
 
-      <div class="d-flex">
-        <div class="flex-grow-1">
-          <h5 class="text-grey"># bookings</h5>
-          <span class="font-weight-bold"><%= current_user.current_week_pm_bookings.size %></span>
-        </div>
-      </div>
+      <h5 class="font-weight-bold"> # <%= pluralize(current_user.current_week_pm_bookings.size, "Booking") %> </h5>
 
       <% @current_week_pm_bookings.each do |booking| %>
         <div class="card card-dashboard">
@@ -64,12 +60,7 @@
     <!-- Property bookings by current MONTH -->
     <div class="tab-pane fade" id="pills-month" role="tabpanel" aria-labelledby="pills-month-tab">
 
-      <div class="d-flex">
-        <div class="flex-grow-1">
-          <h5 class="text-grey"> # <%= pluralize(current_user.current_month_pm_bookings.size, "Boooking") %> </h5>
-          <span class="font-weight-bold"> <%= current_user.current_month_pm_bookings.size %> </span>
-        </div>
-      </div>
+      <h5 class="font-weight-bold"> # <%= pluralize(current_user.current_month_pm_bookings.size, "Booking") %> </h5>
 
       <% @current_month_pm_bookings.each do |booking| %>
         <div class="card card-dashboard">
@@ -110,12 +101,7 @@
     <!--Property bookings by current YEAR -->
     <div class="tab-pane fade" id="pills-year" role="tabpanel" aria-labelledby="pills-year-tab">
 
-      <div class="d-flex">
-        <div class="flex-grow-1">
-          <h5 class="text-grey"># bookings</h5>
-          <span class="font-weight-bold"> <%= current_user.current_year_pm_bookings.size %> </span>
-        </div>
-      </div>
+      <h5 class="font-weight-bold"># <%= pluralize(current_user.current_year_pm_bookings.size, "Booking") %> </h5>
 
       <% @current_year_pm_bookings.each do |booking| %>
         <div class="card card-dashboard">
