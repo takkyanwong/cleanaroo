@@ -64,9 +64,9 @@ users = []
 names.each do |name|
   user = User.create!(email: "#{name}@gmail.com", password: 'password', name: name, phone_number: '+34123465233', role: 0)
   if user.name.in?(['Tay', 'Clement', 'Marin', 'Ben', 'Gus', 'Paul'])
-    user.photo.attach(io: File.open('../louis.jpeg'), filename: "louis.jpeg", content_type: 'image/jpeg')
+    user.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/louis.jpg"), filename: "louis.jpg", content_type: 'image/jpeg')
   else
-    user.photo.attach(io: File.open('../louis.jpeg'), filename: "clenaroo-avatar.jpeg", content_type: 'image/jpeg')
+    user.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/clenaroo-avatar.jpg"), filename: "clenaroo-avatar.jpg", content_type: 'image/jpeg')
   end
   users << user
 end
@@ -74,7 +74,7 @@ end
 cleaners = []
   cleaners_names.each do |cn|
     cleaner = User.create!(email: "#{cn}@gmail.com", password: 'password', name: cn, phone_number: '+34123465233', role: 1)
-    cleaner.photo.attach(io: File.open('../clenaroo-avatar.jpeg'), filename: "clenaroo-avatar.jpeg", content_type: 'image/jpeg')
+    cleaner.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/clenaroo-avatar.jpg"), filename: "clenaroo-avatar.jpg", content_type: 'image/jpeg')
    cleaners << cleaner
 end
 
