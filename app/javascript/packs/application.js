@@ -144,5 +144,9 @@ document.addEventListener('turbolinks:load', () => {
 
 const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
 	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
-	if (signUpValid) { document.getElementById('sign-up-button').disabled = false; }
+	if (signUpValid) {
+		document.getElementById('sign-up-button').disabled = false;
+	} else {
+		document.getElementById('sign-up-button').disabled = true;
+	}
 };
