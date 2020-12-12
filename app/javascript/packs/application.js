@@ -37,6 +37,16 @@ import { initStarRating } from '../plugins/init_star_rating';
 import { fakeLoader } from '../components/fakeloader';
 import { initSweetalert } from "../plugins/init_sweetalert";
 
+
+// graphs
+
+// document.addEventListener('turbolinks:load', () => {
+//   Chartkick.eachChart( function(chart) {
+//     chart.redraw();
+//   });
+// });
+
+
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
   numberDown("#numberDownBed", "#numberBedRooms");

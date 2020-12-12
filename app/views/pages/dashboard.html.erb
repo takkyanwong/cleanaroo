@@ -9,7 +9,7 @@
   </div>
 
   <!--NAVIGATION -->
-  <div class="container mt-3">
+  <div class="container mt-5">
     <ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Upcoming</a>
@@ -80,13 +80,13 @@
     <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-4" %>
     <div>
       <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
-      <h5> <i class="far fa-star" id="green-star"></i> <%= current_user.average_rating %> </h5>
+      <h5> <i class="fas fa-star" id="green-star"></i> <%= current_user.average_rating %> </h5>
     </div>
   </div>
 
   <!--NAVIGATION -->
 
-  <div class="container mt-3">
+  <div class="container mt-5">
 
     <ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
       <li class="nav-item">
@@ -109,12 +109,12 @@
         <div class="d-flex justify-content-between">
           <div class="flex-grow-1">
             <h5 class="text-grey">total cleans</h5>
-            <span class='font-weight-bold'><%= current_user.bookings.length %></span>
+            <span class='font-weight-bold bigger-font'><%= current_user.bookings.length %></span>
           </div>
 
           <div class="flex-grow-1">
             <h5 class="text-grey">total earned</h5>
-            <span class="font-weight-bold"><%= current_user.total_earned %> EUR</span>
+            <span class="font-weight-bold bigger-font"><%= number_to_currency(current_user.total_earned, :unit => "") %> EUR</span>
           </div>
         </div>
 
@@ -140,39 +140,39 @@
 
             <div class="tab-pane fade show active" id="pills-year" role="tabpanel" aria-labelledby="pills-year-tab">
 
-              <div class="d-flex">
+              <div class="d-flex mt-3">
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold"> <%= current_user.current_year_bookings.size %> </span>
+                  <span class="font-weight-bold bigger-font"> <%= current_user.current_year_bookings.size %> </span>
                 </div>
 
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"> <%= current_user.current_year_earnings %> EUR </span>
+                  <span class="font-weight-bold bigger-font"> <%= number_to_currency(current_user.current_year_earnings, :unit => "") %> EUR </span>
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€" %>
+              <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
 
             </div>
 
             <!--MONTH -->
             <div class="tab-pane fade" id="pills-month" role="tabpanel" aria-labelledby="pills-month-tab">
 
-              <div class="d-flex">
+              <div class="d-flex mt-3">
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold"><%= current_user.current_month_bookings.size %></span>
+                  <span class="font-weight-bold bigger-font"><%= current_user.current_month_bookings.size %></span>
                 </div>
 
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"><%= current_user.current_month_earnings %> EUR</span>
+                  <span class="font-weight-bold bigger-font"><%= number_to_currency(current_user.current_month_earnings, :unit => "") %> EUR</span>
 
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€" %>
+              <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
 
             </div>
 
@@ -180,20 +180,20 @@
             <!--WEEK -->
             <div class="tab-pane fade" id="pills-week" role="tabpanel" aria-labelledby="pills-week-tab">
 
-              <div class="d-flex">
+              <div class="d-flex mt-3">
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold"><%= current_user.current_week_bookings.size %></span>
+                  <span class="font-weight-bold bigger-font"><%= current_user.current_week_bookings.size %></span>
                 </div>
 
                 <div class="flex-grow-1">
                   <h5 h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"><%= current_user.current_week_earnings %> EUR</span>
+                  <span class="font-weight-bold bigger-font"><%= number_to_currency(current_user.current_week_earnings, :unit => "") %> EUR</span>
 
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", messages: {empty: "No data"} %>
+              <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", turbolinks: true, defer: true, messages: {empty: "No data"} %>
             </div>
           </div>
 
@@ -265,7 +265,7 @@
                 <h3 class="ml-3"><%= booking.cost.round %> </h3>
               </div>
               <div class="card-item card-button mt-4">
-                <%= link_to "More info", "#", class:"btn-green mt-2"%>
+                <%= link_to "More info", booking_path(booking), class:"btn-green mt-2"%>
               </div>
             </div>
           </div>
@@ -274,7 +274,7 @@
     </div>
   </div>
 
-  <%= render 'shared/dashboard-footer-cleaner' %>
+<%= render 'shared/dashboard-footer-cleaner' %>
 
 <% end %>
 

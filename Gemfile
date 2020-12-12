@@ -25,7 +25,8 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'geocoder'
-gem "chartkick"
+gem 'chartkick', github: 'ankane/chartkick', branch: 'turbolinks'
+
 gem 'groupdate'
 
 #Cloudinary set-up
