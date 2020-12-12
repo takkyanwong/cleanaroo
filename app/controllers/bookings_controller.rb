@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @property = Property.find(params[:property_id])
     @booking.property = @property
+    Chatroom.create(booking: @booking)
 
     if @booking.save
       redirect_to new_booking_booking_task_path(@booking)

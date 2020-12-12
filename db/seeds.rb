@@ -10,6 +10,7 @@ puts "Cleaning Database"
 
 Review.destroy_all
 BookingLog.destroy_all
+Chatroom.destroy_all
 Booking.destroy_all
 Property.destroy_all
 Task.destroy_all
@@ -103,8 +104,9 @@ end
     user: cleaners.sample,
     date: rand(3.month.ago..2.weeks.from_now).to_datetime,
     comment: "be good with my place",
-    state: "paid"
+    state: "paid",
   )
+  chatroom = Chatroom.create!(booking: booking)
   puts "#{booking.date} #{booking.user.name}"
 }
 
