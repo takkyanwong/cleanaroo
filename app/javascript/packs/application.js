@@ -116,7 +116,7 @@ const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, pass
 		}
 	});
 	passwordConfirmation.addEventListener('input', (event) => {
-		if (passwordInput.value === passwordConfirmation.value ) {
+		if (passwordInput.value === event.target.value ) {
 			document.getElementById('password-confirmation-error').style.display = 'none';
 		} else {
 			document.getElementById('password-confirmation-error').style.display = 'block';
