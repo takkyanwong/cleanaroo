@@ -36,6 +36,57 @@ class User < ApplicationRecord
     bookings.sort_by(&:date).reverse
   end
 
+  # Filter upcoming current bookings - PM dashboard
+  def current_year_pm_bookings
+    upcoming_bookings
+    pm_yearly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_year && booking.date <= DateTime.now.end_of_year
+    end
+    pm_yearly_b.sort_by(&:date)
+  end
+
+  def current_month_pm_bookings
+    upcoming_bookings
+    pm_monthly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_month && booking.date <= DateTime.now.end_of_month
+    end
+    pm_monthly_b.sort_by(&:date)
+  end
+
+  def current_week_pm_bookings
+    upcoming_bookings
+    pm_weekly_b = upcoming_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_week && booking.date <= DateTime.now.end_of_week
+    end
+    pm_weekly_b.sort_by(&:date)
+  end
+
+  # Filter past bookings - PM dashboard
+  def past_bookings_year_pm
+    past_bookings
+    pm_past_yearly_b = past_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_year && booking.date <= DateTime.now.end_of_year
+    end
+    pm_past_yearly_b.sort_by(&:date).reverse
+  end
+
+  def past_bookings_month_pm
+    past_bookings
+    pm_past_monthly_b = past_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_month && booking.date <= DateTime.now.end_of_month
+    end
+    pm_past_monthly_b.sort_by(&:date).reverse
+  end
+
+  def past_bookings_week_pm
+    past_bookings
+    pm_past_weekly_b = past_bookings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_week && booking.date <= DateTime.now.end_of_week
+    end
+    pm_past_weekly_b.sort_by(&:date).reverse
+  end
+
+  # Cleaner dashboard
   def average_rating
     ratings = reviews.pluck(:rating)
     (ratings.sum / ratings.length.to_f).round(1)
