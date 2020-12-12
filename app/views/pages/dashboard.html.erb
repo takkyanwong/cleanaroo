@@ -86,7 +86,7 @@
 
   <!--NAVIGATION -->
 
-  <div class="container mt-3">
+  <div class="container mt-5">
 
     <ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
       <li class="nav-item">
@@ -114,7 +114,7 @@
 
           <div class="flex-grow-1">
             <h5 class="text-grey">total earned</h5>
-            <span class="font-weight-bold"><%= current_user.total_earned %> EUR</span>
+            <span class="font-weight-bold"><%= number_to_currency(current_user.total_earned, :unit => "") %> EUR</span>
           </div>
         </div>
 
@@ -148,7 +148,7 @@
 
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"> <%= current_user.current_year_earnings %> EUR </span>
+                  <span class="font-weight-bold"> <%= number_to_currency(current_user.current_year_earnings, :unit => "") %> EUR </span>
                 </div>
               </div>
               <br>
@@ -167,7 +167,7 @@
 
                 <div class="flex-grow-1">
                   <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"><%= current_user.current_month_earnings %> EUR</span>
+                  <span class="font-weight-bold"><%= number_to_currency(current_user.current_month_earnings, :unit => "") %> EUR</span>
 
                 </div>
               </div>
@@ -188,7 +188,7 @@
 
                 <div class="flex-grow-1">
                   <h5 h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold"><%= current_user.current_week_earnings %> EUR</span>
+                  <span class="font-weight-bold"><%= number_to_currency(current_user.current_week_earnings, :unit => "") %> EUR</span>
 
                 </div>
               </div>
