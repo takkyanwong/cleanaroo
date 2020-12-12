@@ -9,10 +9,12 @@
                   required: true %>
       <%= f.input :phone_number,
                   required: true %>
+      <div id="phone-error-message">Invalid Phone Number</div>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
+      <div id="email-error-message">Invalid Email Address</div>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

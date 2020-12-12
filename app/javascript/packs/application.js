@@ -103,11 +103,23 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
 	const phoneInput = document.getElementById('user_phone_number');
 	const emailInput = document.getElementById('user_email');
-	const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
-	phoneInput.addEventListener('input', event => {
-	console.log(phoneRegex.test(event.target.value));
-	if (phoneRegex.test{})
 
-	})
+	const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
+
+	const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+	phoneInput.addEventListener('input', event => {
+		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
+			document.getElementById('phone-error-message').style.display = 'none';
+		} else {
+			document.getElementById('phone-error-message').style.display = 'block';
+		}
 	});
-})
+	emailInput.addEventListener('input', event => {
+		if (emailRegex.test(event.target.value) || emailInput.value.length == 0 ) {
+			document.getElementById('email-error-message').style.display = 'none';
+		} else {
+			document.getElementById('email-error-message').style.display = 'block';
+		}
+	});
+});

@@ -162,3 +162,18 @@
 .new-form .br-wrapper {
   margin: 0 0 50px 0;
 }
+
+// user registration form validation error messages
+#phone-error-message {
+  display: none;
+  color: red;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+#email-error-message {
+  display: none;
+  color: red;
+  font-size: 80%;
+  font-weight: 400;
+}
