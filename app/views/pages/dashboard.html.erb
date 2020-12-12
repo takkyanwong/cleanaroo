@@ -1,15 +1,14 @@
-<!--HEADLINE -->
+<!--PROPERTY MANAGER DASHBOARD -->
 
 <% if current_user.role == "owner" %>
-
 
   <div class="container">
     <h2 class="mb-2">Hello <%= "#{current_user.name}" %></h2>
     <h4>Manage your cleanings and properties below:</h4>
   </div>
 
-  <!--NAVIGATION -->
-  <div class="container mt-5">
+  <!--NAVIGATION PM DASHBOARD-->
+  <div class="container mt-4">
     <ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Upcoming</a>
@@ -22,18 +21,18 @@
       </li>
     </ul>
 
-    <!--UPCOMING BOOKINGS -->
+    <!--PROPERTY MANAGER UPCOMING BOOKINGS -->
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <%= render "shared/filter-upcoming-bookings-dashboard" %>
       </div>
 
-      <!--PAST BOOKINGS -->
+      <!--PROPERTY MANAGER PAST BOOKINGS -->
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <%= render "shared/filter-past-bookings-dashboard" %>
       </div>
 
-    <!--YOUR PROPERTIES -->
+      <!--PROPERTY MANAGER PROPERTIES -->
       <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
         <% current_user.properties.each do |property| %>
           <div class="card card-dashboard">
@@ -69,10 +68,7 @@
   <%= render 'shared/dashboard-footer-properties' %>
 
 
-
-<!-- role=1, -->
-
-
+<!-- role=1, CLEANER DASHBOARD -->
 
 <% else current_user.role == 1 %>
 
@@ -84,7 +80,7 @@
     </div>
   </div>
 
-  <!--NAVIGATION -->
+  <!--NAVIGATION CLEANER DASHBOARD-->
 
   <div class="container mt-5">
 
@@ -100,9 +96,19 @@
       </li>
     </ul>
 
-
-    <!--WALLET -->
     <div class="tab-content" id="pills-tabContent">
+
+      <!--UPCOMING CLEANINGS -->
+      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <%= render "shared/filter-upcoming-cleaner-dashboard" %>
+      </div>
+
+      <!--PAST CLEANINGS -->
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <%= render "shared/filter-past-cleaner-dashboard" %>
+      </div>
+
+      <!--CLEANER WALLET -->
       <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
         <h3 class="mt-4 mb-4 font-weight-bold">Overview</h3>
@@ -118,158 +124,8 @@
           </div>
         </div>
 
-
-        <!--EARNINGS -->
-        <div class="earnings mt-5">
-          <h3 class="mt-4 mb-3 font-weight-bold">Earnings</h3>
-
-          <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="pills-year-tab" data-toggle="pill" href="#pills-year" role="tab" aria-controls="pills-home" aria-selected="true">Year</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="pills-month-tab" data-toggle="pill" href="#pills-month" role="tab" aria-controls="pills-profile" aria-selected="false">Month</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="pills-week-tab" data-toggle="pill" href="#pills-week" role="tab" aria-controls="pills-contact" aria-selected="false">Week</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-
-            <!-- year -->
-
-            <div class="tab-pane fade show active" id="pills-year" role="tabpanel" aria-labelledby="pills-year-tab">
-
-              <div class="d-flex mt-3">
-                <div class="flex-grow-1">
-                  <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold bigger-font"> <%= current_user.current_year_bookings.size %> </span>
-                </div>
-
-                <div class="flex-grow-1">
-                  <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold bigger-font"> <%= number_to_currency(current_user.current_year_earnings, :unit => "") %> EUR </span>
-                </div>
-              </div>
-              <br>
-              <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
-
-            </div>
-
-            <!--MONTH -->
-            <div class="tab-pane fade" id="pills-month" role="tabpanel" aria-labelledby="pills-month-tab">
-
-              <div class="d-flex mt-3">
-                <div class="flex-grow-1">
-                  <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold bigger-font"><%= current_user.current_month_bookings.size %></span>
-                </div>
-
-                <div class="flex-grow-1">
-                  <h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold bigger-font"><%= number_to_currency(current_user.current_month_earnings, :unit => "") %> EUR</span>
-
-                </div>
-              </div>
-              <br>
-              <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
-
-            </div>
-
-
-            <!--WEEK -->
-            <div class="tab-pane fade" id="pills-week" role="tabpanel" aria-labelledby="pills-week-tab">
-
-              <div class="d-flex mt-3">
-                <div class="flex-grow-1">
-                  <h5 class="text-grey"># cleans</h5>
-                  <span class="font-weight-bold bigger-font"><%= current_user.current_week_bookings.size %></span>
-                </div>
-
-                <div class="flex-grow-1">
-                  <h5 h5 class="text-grey"># earned</h5>
-                  <span class="font-weight-bold bigger-font"><%= number_to_currency(current_user.current_week_earnings, :unit => "") %> EUR</span>
-
-                </div>
-              </div>
-              <br>
-              <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", turbolinks: true, defer: true, messages: {empty: "No data"} %>
-            </div>
-          </div>
-
-        </div>
-
-        <br>
-
-
-      </div>
-
-
-
-    <!--UPCOMING CLEANINGS -->
-      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <% current_user.upcoming_cleanings.each do |booking| %>
-          <div class="card card-dashboard">
-            <div class="card-body">
-              <div class="card-item">
-                <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.property.address %></h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.cost.round %> </h3>
-              </div>
-              <div class="card-item card-button mt-4">
-                <% if booking.booking_log.nil? %>
-                  <button class="btn-dark mt-2 mr-2" id="alert-checkin">Check in</button>
-                  <%= link_to "", checkin_booking_booking_logs_path(booking, source: "dashboard"), method: :post, remote: true, id: "update-checkin", class: "hidden" %>
-                <% elsif booking.booking_log.checkin_date_time.present? && booking.booking_log.checkout_date_time.nil? %>
-                  <button class="btn-dark mt-2 mr-2" id="alert-checkout">Check out</button>
-                  <%= link_to "", checkout_booking_booking_logs_path(booking, source: "dashboard"), method: :put, remote: true, id: "update-checkout", class: "hidden" %>
-                <% end %>
-                <%= link_to "More info", booking_path(booking), class:"btn-green mt-2"%>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-
-    <!--PAST CLEANINGS -->
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-        <% current_user.past_cleanings.each do |booking| %>
-          <div class="card card-dashboard">
-            <div class="card-body">
-              <div class="card-item">
-                <div class="card-icon-container"><i class="far fa-calendar fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.date.strftime("%d/%m/%Y") %> </h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"><i class="far fa-clock fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.date.strftime("%H:%M") %> </h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"><i class="fas fa-map-marker-alt fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.property.address %></h3>
-              </div>
-              <div class="card-item">
-                <div class="card-icon-container"> <i class="fas fa-euro-sign fa-fw"></i></div>
-                <h3 class="ml-3"><%= booking.cost.round %> </h3>
-              </div>
-              <div class="card-item card-button mt-4">
-                <%= link_to "More info", booking_path(booking), class:"btn-green mt-2"%>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <!--CLEANER EARNINGS -->
+        <%= render "shared/dashboard-cleaner-earnings" %>
       </div>
     </div>
   </div>

@@ -36,7 +36,7 @@ class User < ApplicationRecord
     bookings.sort_by(&:date).reverse
   end
 
-  # Filter upcoming current bookings - PM dashboard
+ # Filter upcoming current bookings - PM dashboard
   def current_year_pm_bookings
     upcoming_bookings
     pm_yearly_b = upcoming_bookings.select do |booking|
@@ -115,6 +115,22 @@ class User < ApplicationRecord
     bookings.where(date: DateTime.now.beginning_of_week..DateTime.now.end_of_week)
   end
 
+  def current_week_cleaner_bookings
+    upcoming_cleanings
+    cleaner_weekly_b = upcoming_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_week && booking.date <= DateTime.now.end_of_week
+    end
+    cleaner_weekly_b.sort_by(&:date)
+  end
+
+  def past_bookings_week_cleaner
+    past_cleanings
+    cleaner_past_weekly_b = past_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_week && booking.date <= DateTime.now.end_of_week
+    end
+    cleaner_past_weekly_b.sort_by(&:date).reverse
+  end
+
   def current_week_earnings
     total = current_week_bookings.pluck(:cost)
     total.sum.round
@@ -124,6 +140,22 @@ class User < ApplicationRecord
     bookings.where(date: DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end
 
+  def current_month_cleaner_bookings
+    upcoming_cleanings
+    cleaner_monthly_b = upcoming_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_month && booking.date <= DateTime.now.end_of_month
+    end
+    cleaner_monthly_b.sort_by(&:date)
+  end
+
+  def past_bookings_month_cleaner
+    past_cleanings
+    cleaner_past_monthly_b = past_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_month && booking.date <= DateTime.now.end_of_month
+    end
+    cleaner_past_monthly_b.sort_by(&:date).reverse
+  end
+
   def current_month_earnings
     total = current_month_bookings.pluck(:cost)
     total.sum.round
@@ -131,6 +163,22 @@ class User < ApplicationRecord
 
   def current_year_bookings
     bookings.where(date: DateTime.now.beginning_of_year..DateTime.now.end_of_year)
+  end
+
+  def current_year_cleaner_bookings
+    upcoming_cleanings
+    cleaner_yearly_b = upcoming_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_year && booking.date <= DateTime.now.end_of_year
+    end
+    cleaner_yearly_b.sort_by(&:date)
+  end
+
+  def past_bookings_year_cleaner
+    past_cleanings
+    cleaner_past_yearly_b = past_cleanings.select do |booking|
+      booking.date >= DateTime.now.beginning_of_year && booking.date <= DateTime.now.end_of_year
+    end
+    cleaner_past_yearly_b.sort_by(&:date).reverse
   end
 
   def current_year_earnings
