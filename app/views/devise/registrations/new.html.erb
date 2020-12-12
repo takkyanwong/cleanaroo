@@ -23,6 +23,12 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
       <div id="password-confirmation-error">Password doesn't match</div>
+
+      <%= f.input :role,
+                  label: "I am a...",
+                  as: :radio_buttons,
+                  collection: User.roles.keys%>
+
       <%= f.input :photo, as: :file %>
     </div>
 

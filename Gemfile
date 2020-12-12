@@ -25,6 +25,9 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'geocoder'
+gem 'chartkick', github: 'ankane/chartkick', branch: 'turbolinks'
+
+gem 'groupdate'
 
 #Cloudinary set-up
 gem 'dotenv-rails', groups: [:development, :test]
@@ -40,6 +43,7 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'twilio-ruby'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

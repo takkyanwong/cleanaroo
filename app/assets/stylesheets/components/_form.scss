@@ -174,4 +174,19 @@
   margin: -12px 0 8px 0;
 }
 
+.user_role .form-check {
+  display: flex;
+  margin: 0 0 8px 0;
+}
+
+.user_role .form-check-input.is-valid ~ .form-check-label {
+  color: black;
+  margin-left: 20px;
+}
+
+
+.user_role input[type="radio"], input[type="checkbox"] {
+  transform: scale(1.7);
+  filter: hue-rotate(-0.15turn) opacity(0.75);
+}
 

@@ -6,3 +6,11 @@
 //     border:1px solid gray;
 //     background-color:lightblue;
 }
+
+.mapboxgl-canvas {
+  width: 100% !important;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}

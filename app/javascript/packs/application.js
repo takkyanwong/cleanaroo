@@ -2,12 +2,13 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+require("chartkick")
+require("chart.js")
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -33,6 +34,18 @@ import "../plugins/flatpickr";
 import { numberDown, numberUp } from '../components/button';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initStarRating } from '../plugins/init_star_rating';
+import { fakeLoader } from '../components/fakeloader';
+import { initSweetalert } from "../plugins/init_sweetalert";
+
+
+// graphs
+
+// document.addEventListener('turbolinks:load', () => {
+//   Chartkick.eachChart( function(chart) {
+//     chart.redraw();
+//   });
+// });
+
 
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
@@ -48,7 +61,8 @@ document.addEventListener('turbolinks:load', () => {
 
 // JS to autocomplete the address
 document.addEventListener('turbolinks:load', () => {
-    initAutocomplete();
+		initAutocomplete();
+		setTimeout(fakeLoader, 2000);
 });
 
 // Star rating
@@ -100,6 +114,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
+
 const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput) => {
 	phoneInput.addEventListener('input', (event) => {
 		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
@@ -150,3 +165,46 @@ const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmat
 		document.getElementById('sign-up-button').disabled = true;
 	}
 };
+
+// JS alert checkin
+document.addEventListener("turbolinks:load", function() {
+	initSweetalert('#alert-checkin', {
+		title: "Are you ready to start cleaning?",
+		text: "We will inform the property manager that you arrived at the property.",
+		icon: "success",
+		buttons: [ true, "I'm ready!"],
+		closeOnClickOutside: false,
+	}, (value) => {
+		if (value) {
+			const link = document.querySelector('#update-checkin');
+			link.click();
+		}
+	});
+});
+
+// Alert checkout
+document.addEventListener("turbolinks:load", function() {
+	initSweetalert('#alert-checkout', {
+		title: "Have you finished cleaning?",
+		text: "Once you click ok, we will notify the property manager.",
+		icon: "warning",
+		buttons: [ true, "I'm done!"],
+		closeOnClickOutside: false,
+	}, (value) => {
+		if (value) {
+			const link = document.querySelector('#update-checkout');
+			link.click();
+		}
+	});
+});
+
+// Wallet > here we want to jump no the 3rd nav-pill
+// shall go to /dashboard/wallet
+// in dashboard html add nav:"wallet"
+// then add wallet below and check that line 145 targets the right pill
+document.addEventListener('turbolinks:load', () => {
+  if (window.location.href.indexOf('wallet') > 0) { //0 is the index of the string wallet within my URL
+    $('#pills-home-tab').tab('show');
+  }
+});
+
