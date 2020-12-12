@@ -152,7 +152,7 @@
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", defer: true %>
+              <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
 
             </div>
 
@@ -172,7 +172,7 @@
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", defer: true %>
+              <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€",  turbolinks: true, defer: true %>
 
             </div>
 
@@ -193,7 +193,7 @@
                 </div>
               </div>
               <br>
-              <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", defer: true, messages: {empty: "No data"} %>
+              <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", turbolinks: true, defer: true, messages: {empty: "No data"} %>
             </div>
           </div>
 
@@ -265,7 +265,7 @@
                 <h3 class="ml-3"><%= booking.cost.round %> </h3>
               </div>
               <div class="card-item card-button mt-4">
-                <%= link_to "More info", "#", class:"btn-green mt-2"%>
+                <%= link_to "More info", booking_path(booking), class:"btn-green mt-2"%>
               </div>
             </div>
           </div>
