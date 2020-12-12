@@ -100,26 +100,43 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
-document.addEventListener('turbolinks:load', () => {
-	const phoneInput = document.getElementById('user_phone_number');
-	const emailInput = document.getElementById('user_email');
-
-	const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
-
-	const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-	phoneInput.addEventListener('input', event => {
+const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex) => {
+	phoneInput.addEventListener('input', (event) => {
 		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
 			document.getElementById('phone-error-message').style.display = 'none';
 		} else {
 			document.getElementById('phone-error-message').style.display = 'block';
+			document.getElementById('sign-up-button').disabled = true;
 		}
 	});
-	emailInput.addEventListener('input', event => {
+	emailInput.addEventListener('input', (event) => {
 		if (emailRegex.test(event.target.value) || emailInput.value.length == 0 ) {
 			document.getElementById('email-error-message').style.display = 'none';
 		} else {
 			document.getElementById('email-error-message').style.display = 'block';
+			document.getElementById('sign-up-button').disabled = true;
 		}
 	});
+};
+
+document.addEventListener('turbolinks:load', () => {
+	if (document.getElementById('sign-up-button')) {
+		const phoneInput = document.getElementById('user_phone_number');
+		const emailInput = document.getElementById('user_email');
+		const passwordInput = document.getElementById('user_password');
+		const nameInput = document.getElementById('user_name');
+		const signUpForm = document.getElementById('new_user');
+		const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
+		const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+		validateFormFields(phoneInput, emailInput, phoneRegex, emailRegex);
+		signUpForm.addEventListener('input', () => {
+			validateSignUp(phoneRegex, emailInput, passwordInput, nameInput, emailRegex, phoneInput);
+		});
+	}
 });
+
+const validateSignUp = (phoneRegex, emailInput, passwordInput, nameInput, emailRegex, phoneInput) => {
+	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0;
+	if (signUpValid) { document.getElementById('sign-up-button').disabled = false; }
+};
