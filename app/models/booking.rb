@@ -6,6 +6,7 @@ class Booking < ApplicationRecord
   has_many :tasks, through: :booking_tasks
   has_one :review, dependent: :destroy
   has_one :booking_log, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
 
   validates :date, presence: true
 end
