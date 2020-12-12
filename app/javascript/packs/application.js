@@ -106,7 +106,6 @@ const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex) => {
 			document.getElementById('phone-error-message').style.display = 'none';
 		} else {
 			document.getElementById('phone-error-message').style.display = 'block';
-			document.getElementById('sign-up-button').disabled = true;
 		}
 	});
 	emailInput.addEventListener('input', (event) => {
@@ -114,7 +113,6 @@ const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex) => {
 			document.getElementById('email-error-message').style.display = 'none';
 		} else {
 			document.getElementById('email-error-message').style.display = 'block';
-			document.getElementById('sign-up-button').disabled = true;
 		}
 	});
 };
