@@ -39,7 +39,7 @@
   <%= f.input :address, label: false, placeholder: "Enter your address" %>
 
   <% if @property.new_record? %>
-    <%= render 'shared/form_next', f: f %>
+    <%= render 'shared/form-next', f: f %>
   <% else %>
     <%=f.submit "Save", class: "btn-dark mt-5" %>
   <% end %>

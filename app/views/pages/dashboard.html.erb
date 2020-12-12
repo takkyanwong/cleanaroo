@@ -66,7 +66,7 @@
     </div>
   </div>
 
-  <%= render 'shared/dashboard_footer_properties' %>
+  <%= render 'shared/dashboard-footer-properties' %>
 
 
 
@@ -88,22 +88,22 @@
 
   <div class="container mt-3">
 
-    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills nav-fill nav-justified" id="pills-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Wallet</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Upcoming</a>
+        <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Upcoming</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Past</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Wallet</a>
       </li>
     </ul>
 
 
     <!--WALLET -->
     <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
         <h3 class="mt-4 mb-4 font-weight-bold">Overview</h3>
         <div class="d-flex justify-content-between">
@@ -123,15 +123,15 @@
         <div class="earnings mt-5">
           <h3 class="mt-4 mb-3 font-weight-bold">Earnings</h3>
 
-          <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+          <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="pills-year-tab" data-toggle="pill" href="#pills-year" role="tab" aria-controls="pills-home" aria-selected="true">YEAR</a>
+              <a class="nav-link active" id="pills-year-tab" data-toggle="pill" href="#pills-year" role="tab" aria-controls="pills-home" aria-selected="true">Year</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="pills-month-tab" data-toggle="pill" href="#pills-month" role="tab" aria-controls="pills-profile" aria-selected="false">MONTH</a>
+              <a class="nav-link" id="pills-month-tab" data-toggle="pill" href="#pills-month" role="tab" aria-controls="pills-profile" aria-selected="false">Month</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="pills-week-tab" data-toggle="pill" href="#pills-week" role="tab" aria-controls="pills-contact" aria-selected="false">WEEK</a>
+              <a class="nav-link" id="pills-week-tab" data-toggle="pill" href="#pills-week" role="tab" aria-controls="pills-contact" aria-selected="false">Week</a>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="flex-grow-1">
-                  <h5 h5 class="text-grey"># earned</h5>
+                  <h5 class="text-grey"># earned</h5>
                   <span class="font-weight-bold"> <%= current_user.current_year_earnings %> EUR </span>
                 </div>
               </div>
@@ -207,7 +207,7 @@
 
 
     <!--UPCOMING CLEANINGS -->
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <% current_user.upcoming_cleanings.each do |booking| %>
           <div class="card card-dashboard">
             <div class="card-body">
@@ -274,6 +274,6 @@
     </div>
   </div>
 
-  <%= render 'shared/dashboard_footer_properties' %>
+  <%= render 'shared/dashboard-footer-properties' %>
 
 <% end %>
