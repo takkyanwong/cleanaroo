@@ -44,11 +44,11 @@
   color: $green;
 
   &:hover {
-    color: transparentize($green, .5);
+    color: transparentize($green, 0.5);
   }
 
   &:active {
-    color: transparentize($green, .5);
+    color: transparentize($green, 0.5);
   }
 }
 
@@ -72,3 +72,12 @@
   text-transform: uppercase;
   letter-spacing: 1.25px;
 }
+
+.btn-dark-disabled {
+  background-color: gray !important;
+}
+
+// .btn-submit:disabled {
+//   background-color: red;
+//   opacity: 0.3;
+// }

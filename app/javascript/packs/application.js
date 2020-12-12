@@ -53,6 +53,7 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
 		initAutocomplete();
 		setTimeout(fakeLoader, 2000);
+		validateForm();
 });
 
 // Star rating
@@ -135,3 +136,22 @@ document.addEventListener("turbolinks:load", function() {
 		}
 	});
 });
+
+const validateForm = () => {
+	document.querySelector('#new_property').addEventListener('input', () => {
+		let checked = [...document.getElementsByName("property[property_type]")].some(c=>c.checked);
+		let property_size = document.querySelector('#property_size');
+		let sizeValid = property_size.value > 0
+		
+		const property_address = document.querySelector('#property_address');
+		let addressValid = property_address.value !== ""
+
+		if (checked && property_size && property_address) {
+			document.querySelector('.btn-submit').disabled = false;
+			document.querySelector('#new_property .btn-dark').classList.remove("btn-dark-disabled");
+		} else {
+			document.querySelector('.btn-submit').disabled = true;
+			document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
+		};
+	});
+};                     
