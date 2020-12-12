@@ -145,3 +145,13 @@ document.addEventListener("turbolinks:load", function() {
 		}
 	});
 });
+
+// Wallet > here we want to jump no the 3rd nav-pill
+// shall go to /dashboard/wallet
+// in dashboard html add nav:"wallet"
+// then add wallet below and check that line 145 targets the right pill
+document.addEventListener('turbolinks:load', () => {
+  if (window.location.href.indexOf('wallet') > 0) { //0 is the index of the string wallet within my URL
+    $('#pills-home-tab').tab('show');
+  }
+});
