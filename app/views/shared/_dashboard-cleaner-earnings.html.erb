@@ -1,0 +1,80 @@
+<div class="earnings mt-5">
+  <h3 class="mt-4 mb-3 font-weight-bold">Earnings</h3>
+
+  <ul class="nav nav-pills nav-justified" id="pills-earnings-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-earnings-year-tab" data-toggle="pill" href="#pills-earnings-year" role="tab" aria-controls="pills-home" aria-selected="true">Year</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-earnings-month-tab" data-toggle="pill" href="#pills-earnings-month" role="tab" aria-controls="pills-profile" aria-selected="false">Month</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-earnings-week-tab" data-toggle="pill" href="#pills-earnings-week" role="tab" aria-controls="pills-contact" aria-selected="false">Week</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-earnings-tabContent">
+
+    <!-- YEAR -->
+
+    <div class="tab-pane fade show active" id="pills-earnings-year" role="tabpanel" aria-labelledby="pills-earnings-year-tab">
+
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># cleans</h5>
+          <span class="font-weight-bold"> <%= current_user.current_year_bookings.size %> </span>
+        </div>
+
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># earned</h5>
+          <span class="font-weight-bold"> <%= current_user.current_year_earnings %> EUR </span>
+        </div>
+      </div>
+      <br>
+      <%= column_chart current_user.bookings.group_by_month(:date, format: "%m/%Y").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€" %>
+
+    </div>
+
+    <!--MONTH -->
+    <div class="tab-pane fade" id="pills-earnings-month" role="tabpanel" aria-labelledby="pills-earnings-month-tab">
+
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># cleans</h5>
+          <span class="font-weight-bold"><%= current_user.current_month_bookings.size %></span>
+        </div>
+
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># earned</h5>
+          <span class="font-weight-bold"><%= current_user.current_month_earnings %> EUR</span>
+
+        </div>
+      </div>
+      <br>
+      <%= column_chart current_user.current_month_bookings.group_by_week(:date, range: DateTime.now.beginning_of_month..DateTime.now.end_of_month, format: "%d/%m").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€" %>
+
+    </div>
+
+
+    <!--WEEK -->
+    <div class="tab-pane fade" id="pills-earnings-week" role="tabpanel" aria-labelledby="pills-earnings-week-tab">
+
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># cleans</h5>
+          <span class="font-weight-bold"><%= current_user.current_week_bookings.size %></span>
+        </div>
+
+        <div class="flex-grow-1">
+          <h5 class="text-grey"># earned</h5>
+          <span class="font-weight-bold"><%= current_user.current_week_earnings %> EUR</span>
+
+        </div>
+      </div>
+      <br>
+      <%= column_chart current_user.current_week_bookings.group_by_day_of_week(:date, week_start: :monday, format: "%a").sum(:cost), colors: ["#BFECE4", "#666"], suffix: "€", messages: {empty: "No data"} %>
+    </div>
+  </div>
+
+</div>
+
+<br>
