@@ -22,6 +22,7 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <div id="password-confirmation-error">Password doesn't match</div>
       <%= f.input :photo, as: :file %>
     </div>
 
