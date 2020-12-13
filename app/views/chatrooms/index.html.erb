@@ -2,5 +2,9 @@
 
 <% @chatrooms.each do |chatroom| %>
   <p>  <%= chatroom.id %> </p>
+  <p> cleaner: <%= chatroom.booking.user.name %> </p>
+  <p> property manager: <%= chatroom.booking.property.user.name %> </p>
+  <p> property: <%= chatroom.booking.property.address %> </p>
+
 <% end %>
 
