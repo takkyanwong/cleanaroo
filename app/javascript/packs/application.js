@@ -114,7 +114,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
-
+//Sign-up form validation
 const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput) => {
 	phoneInput.addEventListener('input', (event) => {
 		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
@@ -135,8 +135,17 @@ const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, pass
 			document.getElementById('password-confirmation-error').style.display = 'none';
 		} else {
 			document.getElementById('password-confirmation-error').style.display = 'block';
+		}
+	});
+};
+
+const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
+	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
+	if (signUpValid) {
+		document.getElementById('sign-up-button').disabled = false;
+	} else {
+		document.getElementById('sign-up-button').disabled = true;
 	}
-});
 };
 
 document.addEventListener('turbolinks:load', () => {
@@ -157,14 +166,6 @@ document.addEventListener('turbolinks:load', () => {
 	}
 });
 
-const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
-	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
-	if (signUpValid) {
-		document.getElementById('sign-up-button').disabled = false;
-	} else {
-		document.getElementById('sign-up-button').disabled = true;
-	}
-};
 
 // JS alert checkin
 document.addEventListener("turbolinks:load", function() {
