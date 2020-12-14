@@ -1,48 +1,36 @@
-<!-- cleaner role 1  -->
+<% content_for :nav, render('shared/chat-show-top') %>
 
-  <div class="container d-flex chat-border">
-    <%= link_to "#" do %>
-      <i class="fas fa-angle-left mr-4 ml-2 mt-2" id="go-back"></i>
-    <% end %>
+<!-- CHATROOM -->
+<div class="container">
 
-    <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
-    <div>
-      <% if current_user.role == "cleaner" %>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
 
-        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.property.user.name  %> </h3>
+      <div class="chatroom d-flex">
 
-      <% else current_user.role == "owner" %>
-        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.user.name  %> </h3>
-
+        <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-mini bottom" %>
+        <div class="message-container" id="message-<%= message.id %>">
+          <i class="author">
+            <span><%= message.user.name %></span>
+            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+          </i>
+          <p><%= message.content %></p>
+        </div>
+      </div>
       <% end %>
 
-      <h3 class="font-weight-light"> <i class="far fa-calendar fa-fw"></i> <%= @chatroom.booking.date.strftime("%d/%m/%Y")  %> </h3>
-      <h3 class="font-weight-light"> <i class="fas fa-map-marker-alt fa-fw"></i> <%= @chatroom.booking.property.address %> </h3>
-    </div>
+
   </div>
 
-  <%= @chatroom.booking.user.name  %>
-
-
-
-
-<%= @chatroom.booking.date %>
-<%= @chatroom.booking.property.address %>
-
-
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.name %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
-    </div>
-  <% end %>
 </div>
 
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message #" %>
-  <%= f.submit %>
-<% end %>
+<!-- bottom send-message -->
+<div style="height: 120px"></div>
+<div class="container chat-border-top">
+  <div>
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Your message.." %>
+      <%= f.submit 'Send', class:"small-transparent-btn mt-2" %>
+    <% end %>
+  </div>
+</div>
