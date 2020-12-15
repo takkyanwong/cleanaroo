@@ -5,6 +5,11 @@
   max-width: 100%
 }
 
+.chat-card, .chat-card:hover, .chat-card:active, .chat-card:visited, .chat-card:focus {
+  color: $dark-blue;
+  text-decoration: none !important;
+
+}
 .chat-border-bottom-index {
   border-bottom: 1px solid $light-gray;
   height: 64px;

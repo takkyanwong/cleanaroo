@@ -4,10 +4,13 @@ class ChatroomsController < ApplicationController
   def index
     # cleaner:
     if current_user.role == "cleaner"
-      @chatrooms = Chatroom.joins(:messages).where(booking: current_user.bookings)
+
+      @chatrooms = Chatroom.where(booking: current_user.bookings)
+      # @chatrooms = Chatroom.joins(:messages).where(booking: current_user.bookings)
     else
     # prop manager:
-      @chatrooms = Chatroom.joins(:messages).where(booking: current_user.property_bookings)
+      @chatrooms = Chatroom.where(booking: current_user.property_bookings)
+      # @chatrooms = Chatroom.joins(:messages).where(booking: current_user.property_bookings)
     end
   end
 

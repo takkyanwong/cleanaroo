@@ -1,18 +1,20 @@
 <!-- top avatar-name-date-address part-->
 <div class=" container d-flex chat-border-bottom py-3 sticky-top">
-  <%= link_to "#" do %>
+  <%= link_to chatrooms_path do %>
     <i class="fas fa-angle-left mr-4 ml-2 mt-2" id="go-back"></i>
   <% end %>
 
-  <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
-  <div>
-    <% if current_user.role == "cleaner" %>
-      <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.property.user.name  %> </h3>
+  <% if current_user.role == "cleaner" %>
+      <%= cl_image_tag @chatroom.booking.property.user.photo.attached? ? @chatroom.booking.property.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+      <div>
+        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.property.user.name  %> </h3>
     <% else current_user.role == "owner" %>
-      <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.user.name  %> </h3>
+      <%= cl_image_tag @chatroom.booking.user.photo.attached? ? @chatroom.booking.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+      <div>
+        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.user.name  %> </h3>
     <% end %>
 
-    <h3 class="font-weight-light"> <i class="far fa-calendar fa-fw green"></i> <%= @chatroom.booking.date.strftime("%d/%m/%Y") %> </h3>
-    <h3 class="font-weight-light"> <i class="fas fa-map-marker-alt fa-fw green"></i> <%= @chatroom.booking.property.address %> </h3>
+        <h3 class="font-weight-light"> <i class="far fa-calendar fa-fw green"></i> <%= @chatroom.booking.date.strftime("%d/%m/%Y") %> </h3>
+        <h3 class="font-weight-light"> <i class="fas fa-map-marker-alt fa-fw green"></i> <%= @chatroom.booking.property.address %> </h3>
   </div>
 </div>
