@@ -75,9 +75,9 @@ document.addEventListener('turbolinks:load', () => {
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
-	const sidebarBox = document.querySelector('.side__menu'),
-			sidebarBtn = document.querySelector('.burger__btn'),
-			pageWrapper = document.querySelector('#page-wrapper');
+	const sidebarBox = document.querySelector('.side__menu')
+	const	sidebarBtn = document.querySelector('.burger__btn')
+	const pageWrapper = document.querySelector('#page-wrapper');
 
 	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
@@ -113,6 +113,59 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
+
+//Sign-up form validation
+const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput) => {
+	phoneInput.addEventListener('input', (event) => {
+		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
+			document.getElementById('phone-error-message').style.display = 'none';
+		} else {
+			document.getElementById('phone-error-message').style.display = 'block';
+		}
+	});
+	emailInput.addEventListener('input', (event) => {
+		if (emailRegex.test(event.target.value) || emailInput.value.length == 0 ) {
+			document.getElementById('email-error-message').style.display = 'none';
+		} else {
+			document.getElementById('email-error-message').style.display = 'block';
+		}
+	});
+	passwordConfirmation.addEventListener('input', (event) => {
+		if (passwordInput.value === event.target.value ) {
+			document.getElementById('password-confirmation-error').style.display = 'none';
+		} else {
+			document.getElementById('password-confirmation-error').style.display = 'block';
+		}
+	});
+};
+
+const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
+	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
+	if (signUpValid) {
+		document.getElementById('sign-up-button').disabled = false;
+	} else {
+		document.getElementById('sign-up-button').disabled = true;
+	}
+};
+
+document.addEventListener('turbolinks:load', () => {
+	if (document.getElementById('sign-up-button')) {
+		const phoneInput = document.getElementById('user_phone_number');
+		const emailInput = document.getElementById('user_email');
+		const passwordInput = document.getElementById('user_password');
+		const nameInput = document.getElementById('user_name');
+		const signUpForm = document.getElementById('new_user');
+		const passwordConfirmation = document.getElementById('user_password_confirmation');
+		const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
+		const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+		validateFormFields(phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput);
+		signUpForm.addEventListener('input', () => {
+			validateSignUp(phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput);
+		});
+	}
+});
+
 
 // JS alert checkin
 document.addEventListener("turbolinks:load", function() {
@@ -155,3 +208,4 @@ document.addEventListener('turbolinks:load', () => {
     $('#pills-home-tab').tab('show');
   }
 });
+
