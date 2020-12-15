@@ -163,6 +163,17 @@
   margin: 0 0 50px 0;
 }
 
+// user registration form validation error messages
+#phone-error-message,
+#password-confirmation-error,
+#email-error-message {
+  display: none;
+  color: red;
+  font-size: 80%;
+  font-weight: 400;
+  margin: -12px 0 8px 0;
+}
+
 .user_role .form-check {
   display: flex;
   margin: 0 0 8px 0;

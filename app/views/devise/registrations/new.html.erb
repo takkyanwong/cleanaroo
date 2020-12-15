@@ -9,10 +9,12 @@
                   required: true %>
       <%= f.input :phone_number,
                   required: true %>
+      <div id="phone-error-message">Invalid Phone Number</div>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+                  input_html: { autocomplete: "email" } %>
+      <div id="email-error-message">Invalid Email Address</div>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -20,15 +22,18 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <div id="password-confirmation-error">Password doesn't match</div>
+
       <%= f.input :role,
                   label: "I am a...",
                   as: :radio_buttons,
                   collection: User.roles.keys%>
+
       <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn-dark mt-2" %>
+      <%= f.button :submit, "Sign up", class: "btn-dark mt-2", id: "sign-up-button", disabled: true %>
     </div>
   <% end %>
 

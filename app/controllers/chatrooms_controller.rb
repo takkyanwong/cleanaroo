@@ -1,11 +1,13 @@
 class ChatroomsController < ApplicationController
 
+  # get all the bookings from the user
   def index
-    # get all the bookings from the user
-    if User.where(role: 1)
+    # cleaner:
+    if current_user.role == "cleaner"
       @chatrooms = Chatroom.where(booking: current_user.bookings)
     else
-      @chatrooms = Chatroom.where(booking: current_user.booking.property)
+    # prop manager:
+      @chatrooms = Chatroom.where(booking: current_user.property_bookings)
     end
   end
 
