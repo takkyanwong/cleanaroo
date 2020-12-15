@@ -1,10 +1,33 @@
-<h1>hello.</h1>
+<% content_for :nav, render('shared/chat-index-top') %>
 
 <% @chatrooms.each do |chatroom| %>
-  <p>  <%= chatroom.id %> </p>
-  <p> cleaner: <%= chatroom.booking.user.name %> </p>
-  <p> property manager: <%= chatroom.booking.property.user.name %> </p>
-  <p> property: <%= chatroom.booking.property.address %> </p>
 
+  <div class="ml-3 mt-4 d-flex">
+    <% if current_user.role == "cleaner" %>
+      <%= cl_image_tag chatroom.booking.property.user.photo.attached? ? chatroom.booking.property.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+      <div class="chat-index-border-bottom">
+        <div class="d-flex mb-2 justify-content-between  margin-bottom: auto">
+          <h3 class="font-weight-bold"> <%= chatroom.booking.property.user.name  %> </h3>
+          <h4 class="mr-1"> <%= chatroom.last_message.strftime("%d/%m/%Y") %> </h4>
+        </div>
+        <h4 class="mb-1"> <%= chatroom.booking.date.strftime("%d/%m/%Y") %> </h4>
+        <h4 class="mb-2 mr-1"> <%= chatroom.booking.property.address %> </h4>
+      </div>
+    <% else current_user.role == "owner" %>
+      <%= cl_image_tag chatroom.booking.user.photo.attached? ? chatroom.booking.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+      <div class="chat-index-border-bottom">
+        <h3 class="mb-2 font-weight-bold"> <%= chatroom.booking.user.name %> </h3>
+        <h4 class="mb-1"> <%= chatroom.booking.date.strftime("%d/%m/%Y") %> </h4>
+        <h4 class="mb-2 mr-1"> <%= chatroom.booking.property.address %> </h4>
+        <h4> <%= chatroom.last_message.strftime("%d/%m/%Y") %> </h4>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
+
+<% if current_user.role == "cleaner" %>
+  <%= render 'shared/dashboard-footer-cleaner' %>
+<% else current_user.role == "owner" %>
+  <%= render 'shared/dashboard-footer-properties' %>
+<% end %>

@@ -6,9 +6,12 @@
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
 
-      <div class="chatroom d-flex">
+      <!-- applying a class on a div if the user is current_user -->
+      <div class="chatroom d-flex <%= "sender" if message.user == current_user %> ">
 
-        <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-mini bottom" %>
+        <% unless message.user == current_user %>
+          <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-mini bottom" %>
+        <% end %>
         <div class="message-container" id="message-<%= message.id %>">
           <i class="author">
             <span><%= message.user.name %></span>
@@ -16,10 +19,13 @@
           </i>
           <p><%= message.content %></p>
         </div>
+
+        <% if message.user == current_user %>
+          <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "avatar_lrtyy7", class: "avatar-mini bottom" %>
+        <% end %>
+
       </div>
-      <% end %>
-
-
+    <% end %>
   </div>
 
 </div>
