@@ -178,3 +178,8 @@
   transform: scale(1.7);
   filter: hue-rotate(-0.15turn) opacity(0.75);
 }
+
+.new_booking_task .user_role input[type="radio"], input[type="checkbox"] {
+  transform: scale(0);
+  filter: hue-rotate(-0.15turn) opacity(0.75);
+}
