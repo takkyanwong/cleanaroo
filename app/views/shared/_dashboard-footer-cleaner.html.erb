@@ -15,9 +15,12 @@
             <h6 class="mt-2"> Wallet </h6>
           <% end %>
 
-          <%= link_to dashboard_path do %>
-            <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/996/996484.svg', size: "25") %>
-            <h6 class="mt-2"> Profile </h6>
+          <%= link_to chatrooms_path do %>
+            <div class="chat-count">
+              <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/589/589671.svg', size: "25") %>
+              <span class="dot">1</span>
+            </div>
+            <h6 class="mt-2"> Chat </h6>
           <% end %>
         </div>
       </div>
