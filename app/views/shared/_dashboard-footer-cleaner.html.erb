@@ -1,7 +1,6 @@
-<div class="container">
-
-  <div class="footer">
-    <hr>
+<div style="height: 80px"></div>
+<div class="footer-dashboard">
+  <div class="container">
 
     <div class="row">
       <div class="col-12">
@@ -11,7 +10,7 @@
             <h6 class="mt-2"> Dashboard </h6>
           <% end %>
 
-          <%= link_to dashboard_path do %>
+          <%= link_to dashboard_path(nav:"wallet") do %>
             <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/482/482541.svg', size: "25") %>
             <h6 class="mt-2"> Wallet </h6>
           <% end %>

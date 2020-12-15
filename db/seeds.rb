@@ -10,6 +10,7 @@ puts "Cleaning Database"
 
 Review.destroy_all
 BookingLog.destroy_all
+Chatroom.destroy_all
 Booking.destroy_all
 Property.destroy_all
 Task.destroy_all
@@ -58,16 +59,28 @@ titles = ['Best service ever!', 'Can recommend Cleanaroo to everyone!', 'Get the
 
 descriptions = ['Excellent service. On time cleaning! Professional service provided', 'Took a while for a cleaner in our area to pop up, but once we had one booked in...', 'I have been having trouble finding competent cleaners, but with Cleanaroo it is easy peasy.']
 
+
 # Roles: 0 = Property Manager 1 = Cleaner //defined in User Model
+
 users = []
 names.each do |name|
-  users << User.create!(email: "#{name}@gmail.com", password: 'password', name: name, phone_number: '+34123465233', role: 0)
+  user = User.create!(email: "#{name}@gmail.com", password: 'password', name: name, phone_number: '+34123465233', role: 0)
+  if user.name.in?(['Tay', 'Clement', 'Marin', 'Ben', 'Gus', 'Paul'])
+    user.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/louis.jpg"), filename: "louis.jpg", content_type: 'image/jpeg')
+  else
+    user.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/clenaroo-avatar.jpg"), filename: "clenaroo-avatar.jpg", content_type: 'image/jpeg')
+  end
+  users << user
 end
 
 cleaners = []
   cleaners_names.each do |cn|
-    cleaners << User.create!(email: "#{cn}@gmail.com", password: 'password', name: cn, phone_number: '+34123465233', role: 1)
-  end
+    cleaner = User.create!(email: "#{cn}@gmail.com", password: 'password', name: cn, phone_number: '+34123465233', role: 1)
+    cleaner.photo.attach(io: File.open(File.join Rails.root, "app/assets/images/clenaroo-avatar.jpg"), filename: "clenaroo-avatar.jpg", content_type: 'image/jpeg')
+   cleaners << cleaner
+end
+
+
 
   # Seeding properties
   50.times {
@@ -91,8 +104,9 @@ cleaners = []
     user: cleaners.sample,
     date: rand(3.month.ago..2.weeks.from_now).to_datetime,
     comment: "be good with my place",
-    state: "paid"
+    state: "paid",
   )
+  chatroom = Chatroom.create!(booking: booking)
   puts "#{booking.date} #{booking.user.name}"
 }
 

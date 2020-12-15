@@ -1,4 +1,4 @@
-// dashboard overal
+// dashboard PM filters
 .nav-pills .nav-link {
   font-size: 16px !important;
   font-weight: 400 !important;
@@ -16,7 +16,7 @@
   border-bottom-style: solid;
 }
 
-// dashboard cleaner - earnings pills
+// dashboard cleaner - earnings pills & dashboard PM
 
 .nav-fill {
   border: 0.5px solid $light-gray;
@@ -39,6 +39,9 @@
   font-weight: 400 !important;
   border-radius: 4px;
   border-bottom: none;
-
 }
 
+.center-pills {
+  display: flex;
+  justify-content: center;
+}

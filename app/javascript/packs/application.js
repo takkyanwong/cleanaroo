@@ -37,6 +37,16 @@ import { initStarRating } from '../plugins/init_star_rating';
 import { fakeLoader } from '../components/fakeloader';
 import { initSweetalert } from "../plugins/init_sweetalert";
 
+
+// graphs
+
+// document.addEventListener('turbolinks:load', () => {
+//   Chartkick.eachChart( function(chart) {
+//     chart.redraw();
+//   });
+// });
+
+
 // JS to +/- number of Bedrooms
 document.addEventListener('turbolinks:load', () => {
   numberDown("#numberDownBed", "#numberBedRooms");
@@ -66,9 +76,9 @@ document.addEventListener('turbolinks:load', () => {
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
-	const sidebarBox = document.querySelector('.side__menu'),
-			sidebarBtn = document.querySelector('.burger__btn'),
-			pageWrapper = document.querySelector('#page-wrapper');
+	const sidebarBox = document.querySelector('.side__menu')
+	const	sidebarBtn = document.querySelector('.burger__btn')
+	const pageWrapper = document.querySelector('#page-wrapper');
 
 	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
@@ -105,6 +115,59 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
 
+//Sign-up form validation
+const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput) => {
+	phoneInput.addEventListener('input', (event) => {
+		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
+			document.getElementById('phone-error-message').style.display = 'none';
+		} else {
+			document.getElementById('phone-error-message').style.display = 'block';
+		}
+	});
+	emailInput.addEventListener('input', (event) => {
+		if (emailRegex.test(event.target.value) || emailInput.value.length == 0 ) {
+			document.getElementById('email-error-message').style.display = 'none';
+		} else {
+			document.getElementById('email-error-message').style.display = 'block';
+		}
+	});
+	passwordConfirmation.addEventListener('input', (event) => {
+		if (passwordInput.value === event.target.value ) {
+			document.getElementById('password-confirmation-error').style.display = 'none';
+		} else {
+			document.getElementById('password-confirmation-error').style.display = 'block';
+		}
+	});
+};
+
+const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
+	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
+	if (signUpValid) {
+		document.getElementById('sign-up-button').disabled = false;
+	} else {
+		document.getElementById('sign-up-button').disabled = true;
+	}
+};
+
+document.addEventListener('turbolinks:load', () => {
+	if (document.getElementById('sign-up-button')) {
+		const phoneInput = document.getElementById('user_phone_number');
+		const emailInput = document.getElementById('user_email');
+		const passwordInput = document.getElementById('user_password');
+		const nameInput = document.getElementById('user_name');
+		const signUpForm = document.getElementById('new_user');
+		const passwordConfirmation = document.getElementById('user_password_confirmation');
+		const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
+		const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+		validateFormFields(phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput);
+		signUpForm.addEventListener('input', () => {
+			validateSignUp(phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput);
+		});
+	}
+});
+
+
 // JS alert checkin
 document.addEventListener("turbolinks:load", function() {
 	initSweetalert('#alert-checkin', {
@@ -137,6 +200,7 @@ document.addEventListener("turbolinks:load", function() {
 	});
 });
 
+// validation form property page
 const validateForm = () => {
 	document.querySelector('#new_property').addEventListener('input', () => {
 		let checked = [...document.getElementsByName("property[property_type]")].some(c=>c.checked);
@@ -154,4 +218,15 @@ const validateForm = () => {
 			document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
 		};
 	});
-};                     
+};   
+                  
+// Wallet > here we want to jump no the 3rd nav-pill
+// shall go to /dashboard/wallet
+// in dashboard html add nav:"wallet"
+// then add wallet below and check that line 145 targets the right pill
+document.addEventListener('turbolinks:load', () => {
+  if (window.location.href.indexOf('wallet') > 0) { //0 is the index of the string wallet within my URL
+    $('#pills-home-tab').tab('show');
+  }
+});
+
