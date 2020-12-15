@@ -146,7 +146,7 @@ const validateForm = () => {
 		const property_address = document.querySelector('#property_address');
 		let addressValid = property_address.value !== ""
 
-		if (checked && property_size && property_address) {
+		if (checked && sizeValid && addressValid) {
 			document.querySelector('.btn-submit').disabled = false;
 			document.querySelector('#new_property .btn-dark').classList.remove("btn-dark-disabled");
 		} else {
