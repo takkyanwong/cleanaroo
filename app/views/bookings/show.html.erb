@@ -30,13 +30,13 @@
         <%= link_to "", checkout_booking_booking_logs_path(@booking, source: "show"), method: :put, remote: true, id: "update-checkout", class: "hidden" %>
       <% end %>
 
+
+      <span class="dot red"> <%= @booking.chatroom.count_unread(current_user) %> </span>
+
+
       <div class="card-item card-button mt-2">
-        <%= link_to booking_chatroom_path(@booking, @booking.chatroom), class:"btn-green mr-1" do %>
-          <i class="far fa-comments"></i> CHAT
-        <% end %>
-        <%= link_to "#", class:"btn-green ml-1" do %>
-          <i class="fas fa-times"></i> CANCEL
-        <% end %>
+        <%= link_to "CHAT", booking_chatroom_path(@booking, @booking.chatroom), class:"btn-green mr-1" %>
+        <%= link_to "CANCEL", "", class:"btn-green ml-1" %>
       </div>
     </div>
   </div>
