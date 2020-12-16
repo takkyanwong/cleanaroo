@@ -229,8 +229,8 @@ const validateForm = () => {
 			};
 		});
 	}
-};   
-                  
+};
+
 // Wallet > here we want to jump no the 3rd nav-pill
 // shall go to /dashboard/wallet
 // in dashboard html add nav:"wallet"
