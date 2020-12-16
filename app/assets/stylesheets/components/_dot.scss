@@ -1,7 +1,7 @@
  .dot {
   height: 20px;
   width: 20px;
-  background-color: red;
+  background-color: #ec5858;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -12,7 +12,21 @@
   font-weight: bold;
 }
 
+.dot.red {
+  position: absolute;
+  margin: 15px 0px 0 137px;
+}
+
+.dot.property {
+  position: absolute;
+  margin: 27px 0px 0 200px;
+}
+
 .chat-count{
   display: flex;
   align-items: top;
   }
+
+
+
+
