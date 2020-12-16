@@ -63,6 +63,7 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
 		initAutocomplete();
 		setTimeout(fakeLoader, 2000);
+		validateForm();
 });
 
 // Star rating
@@ -75,11 +76,12 @@ document.addEventListener('turbolinks:load', () => {
 
 // Navbar Side Menu Behaviour
 document.addEventListener('turbolinks:load', () => {
-	const sidebarBox = document.querySelector('.side__menu'),
-			sidebarBtn = document.querySelector('.burger__btn'),
-			pageWrapper = document.querySelector('#page-wrapper');
+	const sidebarBox = document.querySelector('.side__menu')
+	const	sidebarBtn = document.querySelector('.burger__btn')
+	const pageWrapper = document.querySelector('#page-wrapper');
 
-	sidebarBtn.addEventListener('click', event => {
+  if (sidebarBtn) {
+  	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
 			sidebarBox.classList.toggle('active');
 			if (sidebarBox.classList.contains('active')) {
@@ -87,32 +89,93 @@ document.addEventListener('turbolinks:load', () => {
 			} else {
 				pageWrapper.style.display = 'none';
 			}
-	});
+  	});
 
-	pageWrapper.addEventListener('click', event => {
+  	pageWrapper.addEventListener('click', event => {
 			if (sidebarBox.classList.contains('active')) {
-					sidebarBtn.classList.remove('active');
-					sidebarBox.classList.remove('active');
-					event.target.style.display = 'none';
+				sidebarBtn.classList.remove('active');
+				sidebarBox.classList.remove('active');
+				event.target.style.display = 'none';
 			}
-	});
+  	});
 
-	window.addEventListener('keydown', event => {
-
+  	window.addEventListener('keydown', event => {
 			if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-					sidebarBtn.classList.remove('active');
-					sidebarBox.classList.remove('active');
-					pageWrapper.style.display = 'none';
+				sidebarBtn.classList.remove('active');
+				sidebarBox.classList.remove('active');
+				pageWrapper.style.display = 'none';
 			}
-	});
+  	});
+  };
 });
 
 // MAP
 import { initMapbox } from '../plugins/init_mapbox';
 
+//Chatroom ActionCable
+import { initChatroomCable } from "../channels/chatroom_channel";
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
+initChatroomCable();
+//chatroom
+document.addEventListener('turbolinks: load', () => {
+	initChatroomCable();
+})
+
+//Sign-up form validation
+const validateFormFields = (phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput) => {
+	phoneInput.addEventListener('input', (event) => {
+		if (phoneRegex.test(event.target.value) || phoneInput.value.length == 0 ) {
+			document.getElementById('phone-error-message').style.display = 'none';
+		} else {
+			document.getElementById('phone-error-message').style.display = 'block';
+		}
+	});
+	emailInput.addEventListener('input', (event) => {
+		if (emailRegex.test(event.target.value) || emailInput.value.length == 0 ) {
+			document.getElementById('email-error-message').style.display = 'none';
+		} else {
+			document.getElementById('email-error-message').style.display = 'block';
+		}
+	});
+	passwordConfirmation.addEventListener('input', (event) => {
+		if (passwordInput.value === event.target.value ) {
+			document.getElementById('password-confirmation-error').style.display = 'none';
+		} else {
+			document.getElementById('password-confirmation-error').style.display = 'block';
+		}
+	});
+};
+
+const validateSignUp = (phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput) => {
+	let signUpValid = phoneRegex.test(phoneInput.value) && emailRegex.test(emailInput.value) && passwordInput.value.length > 0 && nameInput.value.length > 0 && passwordInput.value === passwordConfirmation.value;
+	if (signUpValid) {
+		document.getElementById('sign-up-button').disabled = false;
+	} else {
+		document.getElementById('sign-up-button').disabled = true;
+	}
+};
+
+document.addEventListener('turbolinks:load', () => {
+	if (document.getElementById('sign-up-button')) {
+		const phoneInput = document.getElementById('user_phone_number');
+		const emailInput = document.getElementById('user_email');
+		const passwordInput = document.getElementById('user_password');
+		const nameInput = document.getElementById('user_name');
+		const signUpForm = document.getElementById('new_user');
+		const passwordConfirmation = document.getElementById('user_password_confirmation');
+		const phoneRegex = /^(?=(?:\+|0{2})?(?:(?:[\(\-\)\.\/ \t\f]*\d){7,10})?(?:[\-\.\/ \t\f]?\d{2,3})(?:[\-\s]?[ext]{1,3}[\-\.\/ \t\f]?\d{1,4})?$)((?:\+|0{2})\d{0,3})?(?:[\-\.\/ \t\f]?)(\(0\d[ ]?\d{0,4}\)|\(\d{0,4}\)|\d{0,4})(?:[\-\.\/ \t\f]{0,2}\d){3,8}(?:[\-\s]?(?:x|ext)[\-\t\f ]?(\d{1,4}))?$/;
+		const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+		validateFormFields(phoneInput, emailInput, phoneRegex, emailRegex, passwordConfirmation, passwordInput);
+		signUpForm.addEventListener('input', () => {
+			validateSignUp(phoneRegex, emailInput, passwordInput, passwordConfirmation, nameInput, emailRegex, phoneInput);
+		});
+	}
+});
+
 
 // JS alert checkin
 document.addEventListener("turbolinks:load", function() {
@@ -146,6 +209,29 @@ document.addEventListener("turbolinks:load", function() {
 	});
 });
 
+// validation form property page
+const validateForm = () => {
+	if (document.querySelector('#new_property')) {
+		document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
+		document.querySelector('#new_property').addEventListener('input', () => {
+			let checked = [...document.getElementsByName("property[property_type]")].some(c=>c.checked);
+			let property_size = document.querySelector('#property_size');
+			let sizeValid = property_size.value > 0
+
+			const property_address = document.querySelector('#property_address');
+			let addressValid = property_address.value !== ""
+
+			if (checked && sizeValid && addressValid) {
+				document.querySelector('.btn-submit').disabled = false;
+				document.querySelector('#new_property .btn-dark').classList.remove("btn-dark-disabled");
+			} else {
+				document.querySelector('.btn-submit').disabled = true;
+				document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
+			};
+		});
+	}
+};
+
 // Wallet > here we want to jump no the 3rd nav-pill
 // shall go to /dashboard/wallet
 // in dashboard html add nav:"wallet"
@@ -155,3 +241,4 @@ document.addEventListener('turbolinks:load', () => {
     $('#pills-home-tab').tab('show');
   }
 });
+

@@ -1,0 +1,18 @@
+ .dot {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -10px 0px 0 -10px;
+  color: white;
+  font-family: Mulish;
+  font-weight: bold;
+}
+
+.chat-count{
+  display: flex;
+  align-items: top;
+  }
