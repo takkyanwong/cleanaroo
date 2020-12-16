@@ -110,8 +110,16 @@ document.addEventListener('turbolinks:load', () => {
 // MAP
 import { initMapbox } from '../plugins/init_mapbox';
 
+//Chatroom ActionCable
+import { initChatroomCable } from "../channels/chatroom_channel";
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+})
+initChatroomCable();
+//chatroom
+document.addEventListener('turbolinks: load', () => {
+	initChatroomCable();
 })
 
 //Sign-up form validation
