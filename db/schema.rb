@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_152132) do
+ActiveRecord::Schema.define(version: 2020_12_15_190915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,19 +85,6 @@ ActiveRecord::Schema.define(version: 2020_12_12_152132) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "state"
-    t.string "booking_sku"
-    t.string "cost"
-    t.string "checkout_session_id"
-    t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["booking_id"], name: "index_orders_on_booking_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
   create_table "properties", force: :cascade do |t|
     t.string "address"
     t.integer "size"
@@ -153,8 +140,6 @@ ActiveRecord::Schema.define(version: 2020_12_12_152132) do
   add_foreign_key "chatrooms", "bookings"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "orders", "bookings"
-  add_foreign_key "orders", "users"
   add_foreign_key "properties", "users"
   add_foreign_key "reviews", "bookings"
 end
