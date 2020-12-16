@@ -1,0 +1,5 @@
+meta_product_name: "Cleanaroo"
+meta_title: "Cleanaroo - Always deliver a clean stay"
+meta_description: "Cleanaroo is an app that will help you finding the best cleaning services for your vacation rental services."
+meta_image: "clean_green.png" # should exist in `app/assets/images/`
+twitter_account: "@cleanaroo_app_official"   # required for Twitter Cards
