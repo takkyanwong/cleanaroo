@@ -29,6 +29,8 @@ gem 'chartkick', github: 'ankane/chartkick', branch: 'turbolinks'
 
 gem 'groupdate'
 
+gem 'unread'
+
 #Cloudinary set-up
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
