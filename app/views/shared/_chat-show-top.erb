@@ -1,0 +1,29 @@
+<!-- top avatar-name-date-address part-->
+<div class=" container d-flex chat-border-bottom py-3 sticky-top">
+  <%= link_to chatrooms_path do %>
+    <i class="fas fa-angle-left mr-4 ml-2 mt-2" id="go-back"></i>
+  <% end %>
+
+  <% if current_user.role == "cleaner" %>
+
+    <%= cl_image_tag @chatroom.booking.property.user.photo.attached? ? @chatroom.booking.property.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+    <%= link_to booking_path(@chatroom.booking) do %>
+      <div class="chat-window">
+        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.property.user.name  %> </h3>
+        <h4 class="font-weight-light"> <i class="far fa-calendar fa-fw green"></i> <%= @chatroom.booking.date.strftime("%d/%m/%Y") %> </h4>
+        <h4 class="font-weight-light"> <i class="fas fa-map-marker-alt fa-fw green"></i> <%= @chatroom.booking.property.address %> </h4>
+      </div>
+    <% end %>
+
+  <% else current_user.role == "owner" %>
+
+    <%= cl_image_tag @chatroom.booking.user.photo.attached? ? @chatroom.booking.user.photo.key : "avatar_lrtyy7", class: "avatar-bordered mr-3" %>
+    <%= link_to dashboard_path do %>
+      <div class="chat-window">
+        <h3 class="mb-2 font-weight-bold"> <%= @chatroom.booking.user.name  %> </h3>
+        <h4 class="font-weight-light"> <i class="far fa-calendar fa-fw green"></i> <%= @chatroom.booking.date.strftime("%d/%m/%Y") %> </h4>
+        <h4 class="font-weight-light"> <i class="fas fa-map-marker-alt fa-fw green"></i> <%= @chatroom.booking.property.address %> </h4>
+      </div>
+    <% end %>
+  <% end %>
+</div>

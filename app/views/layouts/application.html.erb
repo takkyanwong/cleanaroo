@@ -32,7 +32,12 @@
 
   <body>
 
-    <%= render 'shared/navbar-cleanaroo' %>
+    <% if content_for? :nav %>
+      <%= content_for :nav %>
+    <% else %>
+      <%= render 'shared/navbar-cleanaroo' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>

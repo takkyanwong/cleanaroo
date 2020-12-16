@@ -4,10 +4,11 @@ class ChatroomsController < ApplicationController
   def index
     # cleaner:
     if current_user.role == "cleaner"
-      @chatrooms = Chatroom.where(booking: current_user.bookings)
+
+      @chatrooms = Chatroom.joins(:messages).distinct.where(booking: current_user.bookings).sort_by(&:last_message_time).reverse
     else
     # prop manager:
-      @chatrooms = Chatroom.where(booking: current_user.property_bookings)
+      @chatrooms = Chatroom.joins(:messages).distinct.where(booking: current_user.property_bookings).sort_by(&:last_message_time).reverse
     end
   end
 

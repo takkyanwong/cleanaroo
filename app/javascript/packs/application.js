@@ -80,7 +80,8 @@ document.addEventListener('turbolinks:load', () => {
 	const	sidebarBtn = document.querySelector('.burger__btn')
 	const pageWrapper = document.querySelector('#page-wrapper');
 
-	sidebarBtn.addEventListener('click', event => {
+  if (sidebarBtn) {
+  	sidebarBtn.addEventListener('click', event => {
 			sidebarBtn.classList.toggle('active');
 			sidebarBox.classList.toggle('active');
 			if (sidebarBox.classList.contains('active')) {
@@ -88,24 +89,24 @@ document.addEventListener('turbolinks:load', () => {
 			} else {
 				pageWrapper.style.display = 'none';
 			}
-	});
+  	});
 
-	pageWrapper.addEventListener('click', event => {
+  	pageWrapper.addEventListener('click', event => {
 			if (sidebarBox.classList.contains('active')) {
-					sidebarBtn.classList.remove('active');
-					sidebarBox.classList.remove('active');
-					event.target.style.display = 'none';
+				sidebarBtn.classList.remove('active');
+				sidebarBox.classList.remove('active');
+				event.target.style.display = 'none';
 			}
-	});
+  	});
 
-	window.addEventListener('keydown', event => {
-
+  	window.addEventListener('keydown', event => {
 			if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-					sidebarBtn.classList.remove('active');
-					sidebarBox.classList.remove('active');
-					pageWrapper.style.display = 'none';
+				sidebarBtn.classList.remove('active');
+				sidebarBox.classList.remove('active');
+				pageWrapper.style.display = 'none';
 			}
-	});
+  	});
+  };
 });
 
 // MAP
@@ -216,10 +217,10 @@ const validateForm = () => {
 			let checked = [...document.getElementsByName("property[property_type]")].some(c=>c.checked);
 			let property_size = document.querySelector('#property_size');
 			let sizeValid = property_size.value > 0
-			
+
 			const property_address = document.querySelector('#property_address');
 			let addressValid = property_address.value !== ""
-	
+
 			if (checked && sizeValid && addressValid) {
 				document.querySelector('.btn-submit').disabled = false;
 				document.querySelector('#new_property .btn-dark').classList.remove("btn-dark-disabled");

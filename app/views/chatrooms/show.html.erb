@@ -1,23 +1,22 @@
-<!-- cleaner role = 1 -->
-<% if current_user.role == "cleaner" %>
-  <%= @chatroom.booking.property.user.name  %>
-<% else current_user.role == "owner" %>
-  <%= @chatroom.booking.user.name  %>
-<% end %>
+<% content_for :nav, render('shared/chat-show-top') %>
 
+<!-- CHATROOM -->
+<div class="container">
 
-<h1>chatroom</h1>
-<%= @chatroom.booking.date %>
-<%= @chatroom.booking.property.address %>
-
-
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <%= render "messages/message", message: message %>
-  <% end %>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
 </div>
 
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message #" %>
-  <%= f.submit %>
-<% end %>
+<!-- bottom send-message -->
+<div style="height: 120px"></div>
+<div class="container chat-border-top">
+  <div>
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Your message.." %>
+      <%= f.submit 'Send', class:"small-transparent-btn mt-2" %>
+    <% end %>
+  </div>
+</div>
