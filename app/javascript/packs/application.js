@@ -63,6 +63,7 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
 		initAutocomplete();
 		setTimeout(fakeLoader, 2000);
+		validateForm();
 });
 
 // Star rating
@@ -110,8 +111,16 @@ document.addEventListener('turbolinks:load', () => {
 // MAP
 import { initMapbox } from '../plugins/init_mapbox';
 
+//Chatroom ActionCable
+import { initChatroomCable } from "../channels/chatroom_channel";
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+})
+initChatroomCable();
+//chatroom
+document.addEventListener('turbolinks: load', () => {
+	initChatroomCable();
 })
 
 //Sign-up form validation
@@ -199,6 +208,29 @@ document.addEventListener("turbolinks:load", function() {
 	});
 });
 
+// validation form property page
+const validateForm = () => {
+	if (document.querySelector('#new_property')) {
+		document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
+		document.querySelector('#new_property').addEventListener('input', () => {
+			let checked = [...document.getElementsByName("property[property_type]")].some(c=>c.checked);
+			let property_size = document.querySelector('#property_size');
+			let sizeValid = property_size.value > 0
+			
+			const property_address = document.querySelector('#property_address');
+			let addressValid = property_address.value !== ""
+	
+			if (checked && sizeValid && addressValid) {
+				document.querySelector('.btn-submit').disabled = false;
+				document.querySelector('#new_property .btn-dark').classList.remove("btn-dark-disabled");
+			} else {
+				document.querySelector('.btn-submit').disabled = true;
+				document.querySelector('#new_property .btn-dark').classList.add("btn-dark-disabled");
+			};
+		});
+	}
+};   
+                  
 // Wallet > here we want to jump no the 3rd nav-pill
 // shall go to /dashboard/wallet
 // in dashboard html add nav:"wallet"

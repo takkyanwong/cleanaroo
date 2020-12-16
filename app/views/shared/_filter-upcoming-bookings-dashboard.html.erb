@@ -45,13 +45,14 @@
             <% booking.booking_tasks.each do |t| %>
               <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
             <% end %>
+
             <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="far fa-edit"></i> CHANGE
-              <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="fas fa-times"></i> CANCEL
-              <% end %>
+              <%= link_to "CHAT", booking_chatroom_path(booking, booking.chatroom), class:"btn-dark mr-1" %>
+            </div>
+
+            <div class="card-item card-button mt-1">
+              <%= link_to "CHANGE", "", class:"btn-green mr-1" %>
+              <%= link_to "CANCEL", "", class:"btn-green ml-1"%>
             </div>
           </div>
         </div>
@@ -87,13 +88,14 @@
             <% booking.booking_tasks.each do |t| %>
               <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
             <% end %>
+
             <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="far fa-edit"></i> CHANGE
-              <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="fas fa-times"></i> CANCEL
-              <% end %>
+              <%= link_to "CHAT", booking_chatroom_path(booking, booking.chatroom), class:"btn-dark mr-1" %>
+            </div>
+
+            <div class="card-item card-button mt-1">
+              <%= link_to "CHANGE", "", class:"btn-green mr-1" %>
+              <%= link_to "CANCEL", "", class:"btn-green ml-1"%>
             </div>
           </div>
         </div>
@@ -129,13 +131,14 @@
             <% booking.booking_tasks.each do |t| %>
               <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
             <% end %>
+
             <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="far fa-edit"></i> CHANGE
-              <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="fas fa-times"></i> CANCEL
-              <% end %>
+              <%= link_to "CHAT", booking_chatroom_path(booking, booking.chatroom), class:"btn-dark mr-1" %>
+            </div>
+
+            <div class="card-item card-button mt-1">
+              <%= link_to "CHANGE", "", class:"btn-green mr-1" %>
+              <%= link_to "CANCEL", "", class:"btn-green ml-1"%>
             </div>
           </div>
         </div>
@@ -170,13 +173,14 @@
             <% booking.booking_tasks.each do |t| %>
               <h4 class="mb-1"> <i class="fas fa-check fa-fw grey"></i> <%= t.task.title %></h4>
             <% end %>
+
             <div class="card-item card-button mt-4">
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="far fa-edit"></i> CHANGE
-              <% end %>
-              <%= link_to "#", class:"btn-transparent" do %>
-                <i class="fas fa-times"></i> CANCEL
-              <% end %>
+              <%= link_to "CHAT", booking_chatroom_path(booking, booking.chatroom), class:"btn-dark mr-1" %>
+            </div>
+
+            <div class="card-item card-button mt-1">
+              <%= link_to "CHANGE", "", class:"btn-green mr-1"%>
+              <%= link_to "CANCEL", "", class:"btn-green ml-1"%>
             </div>
           </div>
         </div>
