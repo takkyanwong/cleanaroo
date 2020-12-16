@@ -1,15 +1,14 @@
 .chat-border-bottom {
   border-bottom: 1px solid $light-gray;
-  height: 160px;
+  height: 150px;
   background-color: white;
   max-width: 100%
 }
 
-.chat-card, .chat-card:hover, .chat-card:active, .chat-card:visited, .chat-card:focus {
+.chat-card {
   color: $dark-blue;
-  text-decoration: none !important;
-
 }
+
 .chat-border-bottom-index {
   border-bottom: 1px solid $light-gray;
   height: 64px;
@@ -22,6 +21,10 @@
 
 .chat-index-border-bottom {
   border-bottom: 1px solid $light-gray;
+  text-decoration: none !important;
+  a, a:hover {
+    text-decoration: none !important;
+  }
 }
 
 
@@ -73,9 +76,14 @@
   flex: 0 auto;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
 .chats {
   margin: 0 auto;
 }
+
 #messages {
   padding: 0;
   padding-bottom: 1rem;
