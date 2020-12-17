@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   has_many :orders
+  has_many :messages
   has_one_attached :photo
 
   validates :name, presence: true
@@ -188,5 +189,8 @@ class User < ApplicationRecord
     total.sum.round
   end
 
+  # def all_unread_messages
+  #   Message.unread_by(current_user)
+  # end
 end
 
