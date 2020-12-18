@@ -1,13 +1,13 @@
 require_relative 'boot'
 
 require 'rails/all'
-require 'lib/cloudflare_proxy'
+# require 'lib/cloudflare_proxy'
+# config.middleware.use CloudflareProxy
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-config.middleware.use CloudflareProxy
 
 module Cleanaroo
   class Application < Rails::Application
