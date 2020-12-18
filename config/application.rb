@@ -1,8 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
-require "cloudflare_proxy"
-
+require 'lib/cloudflare_proxy'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
