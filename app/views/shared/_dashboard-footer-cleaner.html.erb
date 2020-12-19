@@ -16,11 +16,15 @@
           <% end %>
 
           <%= link_to chatrooms_path do %>
-            <div class="chat-count">
-              <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/589/589671.svg', size: "25") %>
-                <span class="dot">
-                <%= Message.unread_by(current_user).count %> </span>
-            </div>
+            <% if  Message.unread_by(current_user).count > 0 %>
+              <div class="chat-count">
+                <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/589/589671.svg', size: "25") %>
+                  <span class="dot">
+                  <%= Message.unread_by(current_user).count %> </span>
+              </div>
+            <% else %>
+            <%= image_tag('https://www.flaticon.com/svg/static/icons/svg/589/589671.svg', size: "25") %>
+            <% end %>
             <h6 class="mt-2"> Chat </h6>
           <% end %>
         </div>

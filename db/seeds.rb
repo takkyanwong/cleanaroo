@@ -15,6 +15,7 @@ Booking.destroy_all
 Property.destroy_all
 Task.destroy_all
 User.destroy_all
+Message.destroy_all
 
 puts "Seeding Stuff"
 
