@@ -188,9 +188,4 @@ class User < ApplicationRecord
     total = current_year_bookings.pluck(:cost)
     total.sum.round
   end
-
-  # def all_unread_messages
-  #   Message.unread_by(current_user)
-  # end
 end
-
