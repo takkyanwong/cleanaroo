@@ -35,14 +35,26 @@
 @media (min-width: 700px) {
   .booking-process {
     display: flex;
+    align-items: center;
   }
 
+  .booking-step {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
   .step-text h4,
   i {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
   }
 
   .step-text {
     margin: 30px;
+    p {
+      margin-top: 0.6rem;
+    }
+  }
+
+  .extra-m {
+    margin-top: 6rem !important;
   }
 }
