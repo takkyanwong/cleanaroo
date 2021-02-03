@@ -69,4 +69,22 @@
   .font-desktop {
     font-size: 2.5rem !important;
   }
+
+  .flex-desktop {
+    display: flex;
+    gap: 20px;
+    .card {
+      width: 40vw;
+      margin: 0 auto;
+    }
+
+    .card-body h5,
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body i {
+      margin-bottom: 1rem;
+    }
+  }
 }
