@@ -30,3 +30,19 @@
   position: relative;
   height: 100%;
 }
+
+// big screen
+@media (min-width: 700px) {
+  .booking-process {
+    display: flex;
+  }
+
+  .step-text h4,
+  i {
+    font-size: 1.4rem !important;
+  }
+
+  .step-text {
+    margin: 30px;
+  }
+}
