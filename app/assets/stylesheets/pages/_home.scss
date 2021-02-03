@@ -33,6 +33,14 @@
 
 // big screen
 @media (min-width: 700px) {
+  .home-text h1 {
+    font-size: 4rem !important;
+  }
+
+  .home-text h4 {
+    font-size: 2rem !important;
+  }
+
   .booking-process {
     display: flex;
     align-items: center;
@@ -56,5 +64,9 @@
 
   .extra-m {
     margin-top: 6rem !important;
+  }
+
+  .font-desktop {
+    font-size: 2.5rem !important;
   }
 }
