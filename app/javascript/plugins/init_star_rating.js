@@ -1,8 +1,8 @@
-import "jquery-bar-rating"
+import "jquery-bar-rating";
 
 const initStarRating = () => {
-  $('#review_rating').barrating({
-    theme: 'css-stars'
+  $("#review_rating").barrating({
+    theme: "css-stars",
   });
 };
 

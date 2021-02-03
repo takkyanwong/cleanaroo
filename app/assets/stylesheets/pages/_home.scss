@@ -30,3 +30,61 @@
   position: relative;
   height: 100%;
 }
+
+// big screen
+@media (min-width: 700px) {
+  .home-text h1 {
+    font-size: 4rem !important;
+  }
+
+  .home-text h4 {
+    font-size: 2rem !important;
+  }
+
+  .booking-process {
+    display: flex;
+    align-items: center;
+  }
+
+  .booking-step {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+  .step-text h4,
+  i {
+    font-size: 1.3rem !important;
+  }
+
+  .step-text {
+    margin: 30px;
+    p {
+      margin-top: 0.6rem;
+    }
+  }
+
+  .extra-m {
+    margin-top: 6rem !important;
+  }
+
+  .font-desktop {
+    font-size: 2.5rem !important;
+  }
+
+  .flex-desktop {
+    display: flex;
+    gap: 20px;
+    .card {
+      width: 40vw;
+      margin: 0 auto;
+    }
+
+    .card-body h5,
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body i {
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,6 +1,16 @@
 .banner {
-  height: 350px;
-  background-position: center;
-  background-size: cover;
-  position: relative;
+	height: 350px;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+// big screen
+@media (min-width: 700px) {
+	.banner {
+		height: 50vh;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+	}
 }

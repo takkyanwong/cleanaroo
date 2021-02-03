@@ -10,7 +10,7 @@
   flex-wrap: wrap;
 }
 
-.property-type-wrapper{
+.property-type-wrapper {
   @extend %form-wrapper;
 }
 
@@ -34,7 +34,7 @@
   height: 76px;
   padding: 16px 40px;
   color: $dark-blue;
-  border: 2px solid #27C6C7;
+  border: 2px solid #27c6c7;
   text-align: center;
   margin: 3px 0;
 }
@@ -124,7 +124,11 @@
   justify-content: flex-start;
 }
 
-#new_booking_task .category-wrapper .tag-item:last-of-type input:checked + label {
+#new_booking_task
+  .category-wrapper
+  .tag-item:last-of-type
+  input:checked
+  + label {
   background-color: transparent;
   color: $dark-blue;
   font-weight: 600 !important;
@@ -184,13 +188,14 @@
   margin-left: 20px;
 }
 
-
-.user_role input[type="radio"], input[type="checkbox"] {
+.user_role input[type="radio"],
+input[type="checkbox"] {
   transform: scale(1.7);
   filter: hue-rotate(-0.15turn) opacity(0.75);
 }
 
-.new_booking_task .user_role input[type="radio"], input[type="checkbox"] {
+.new_booking_task .user_role input[type="radio"],
+input[type="checkbox"] {
   transform: scale(0);
   filter: hue-rotate(-0.15turn) opacity(0.75);
 }
