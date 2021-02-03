@@ -89,3 +89,11 @@
 .btn-dark-disabled {
   background-color: gray !important;
 }
+
+// big screen
+@media (min-width: 700px) {
+  %btn {
+    width: 30%;
+    margin: 0 auto;
+  }
+}

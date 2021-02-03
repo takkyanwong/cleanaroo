@@ -4,28 +4,27 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
-$body-bg:                 $white;
+$font-family-sans-serif: $body-font;
+$headings-font-family: $headers-font;
+$body-bg: $white;
 $font-size-base: 1rem;
-
 
 // Colors
 $body-color: $dark-blue;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$primary: $blue;
+$success: $green;
+$info: $yellow;
+$danger: $red;
+$warning: $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius: 2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-$input-bg:   $bright-green !default;
-$input-border-radius:  8px !default;
-$input-border-color:  $light-green !default;
+$input-bg: $bright-green !default;
+$input-border-radius: 8px !default;
+$input-border-color: $light-green !default;
 $input-focus-border-color: $light-green !default;
 $input-focus-box-shadow: 0 0 0 0.1rem $light-green !default;

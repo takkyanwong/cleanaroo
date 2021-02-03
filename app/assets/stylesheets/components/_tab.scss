@@ -2,12 +2,13 @@
 .nav-pills .nav-link {
   font-size: 16px !important;
   font-weight: 400 !important;
-  color: #7B8794 !important;
+  color: #7b8794 !important;
   background-color: none !important;
   margin: 0 0 10px 0;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   font-size: 16px !important;
   font-weight: 700 !important;
   color: $dark-blue !important;
@@ -33,7 +34,8 @@
   padding: 0.2rem 0 !important;
 }
 
-.nav-fill .nav-link.active, .nav-pills .show > .nav-link {
+.nav-fill .nav-link.active,
+.nav-pills .show > .nav-link {
   color: white !important;
   background-color: $green !important;
   font-weight: 400 !important;

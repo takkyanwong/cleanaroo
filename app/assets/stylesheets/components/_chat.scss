@@ -2,7 +2,7 @@
   border-bottom: 1px solid $light-gray;
   height: 150px;
   background-color: white;
-  max-width: 100%
+  max-width: 100%;
 }
 
 .chat-card {
@@ -22,11 +22,11 @@
 .chat-index-border-bottom {
   border-bottom: 1px solid $light-gray;
   text-decoration: none !important;
-  a, a:hover {
+  a,
+  a:hover {
     text-decoration: none !important;
   }
 }
-
 
 .chatroom.sender {
   justify-content: flex-end;
