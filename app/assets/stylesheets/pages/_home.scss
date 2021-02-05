@@ -73,9 +73,11 @@
   .flex-desktop {
     display: flex;
     gap: 20px;
+    flex-basis: auto;
     .card {
-      width: 40vw;
+      flex-basis: auto;
       margin: 0 auto;
+      flex-grow: 1;
     }
 
     .card-body h5,
