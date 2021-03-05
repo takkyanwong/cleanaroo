@@ -49,10 +49,6 @@ $viewport_size: (
 
 /* media query to only show desktop version if width is > 1200px */
 @media (min-width: map-get($viewport_size, l)) {
-  .burger__btn {
-    display: none;
-  }
-
   .desktop__menu {
     display: flex;
     justify-content: center;
